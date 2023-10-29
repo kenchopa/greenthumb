@@ -28,7 +28,6 @@ const sessionCreateAction = actionHandler(
       accessTokenExpiredAt,
       refreshToken,
       refreshTokenExpiredAt,
-      roles,
     } = await authService.authenticate(login, password, span);
 
     ctx.status = HttpStatusCode.OK;

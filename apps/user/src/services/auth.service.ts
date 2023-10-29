@@ -87,7 +87,7 @@ export class AuthService {
       accessTokenExpiredAt,
     );
 
-    // Generate access token based on a user role for 1 day
+    // Generate refresh token based on a user role for 1 day
     const refreshTokenExpiredAt = makeRefreshTokenExpiredAtDate();
     const { raw: refreshToken } = generateRefreshToken(
       role,
