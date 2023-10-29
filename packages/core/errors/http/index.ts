@@ -1,4 +1,5 @@
 export { default as BadRequestError } from './badRequest.error';
+export { default as ConcurrencyError } from './concurrency.error';
 export { default as ConnectionError } from './connection.error';
 export { default as ForbiddenError } from './forbidden.error';
 export { default as InternalServerError } from './internalServer.error';
