@@ -1,0 +1,8 @@
+http:
+  services:
+    {{service}}:
+      loadBalancer:
+        serversTransport: insecureHttpsTransport
+        passHostHeader: {{headers}}
+        servers:
+          - url: "{{value}}"

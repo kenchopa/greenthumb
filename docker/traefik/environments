@@ -1,0 +1,5 @@
+#!/bin/bash
+
+local_portal="http://portal:3000"
+local_user="http://user:3000"
+local_user="http://telemetry:3000"

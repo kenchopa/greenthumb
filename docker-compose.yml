@@ -1,0 +1,51 @@
+version: "3.7"
+
+networks: 
+  default: 
+    name: greenthumb
+
+services:
+  traefik:
+    image: "traefik:v2.5"
+    container_name: "traefik"
+    command:
+      - "--log.level=ERROR"
+      - "--accesslog=true"
+      - "--log.format=json"
+      - "--api.insecure=true"
+      - "--providers.docker=true"
+      - "--providers.docker.exposedbydefault=false"
+      - "--providers.file.directory=/app/configuration/"
+      - "--providers.file.watch=true"
+      - "--entrypoints.web.address=:80"
+      - "--entrypoints.webSecure.address=:443"
+    ports:
+      - "80:80"
+      - "443:443"
+      - "8080:8080"
+    volumes:
+      - "/var/run/docker.sock:/var/run/docker.sock:ro"
+      - "./docker/traefik:/app"
+
+  hosts:
+    image: nginx:1.20.2-alpine
+    container_name: "hosts"
+    volumes:
+      - "./docker/traefik/servehosts.nginx.conf:/etc/nginx/nginx.conf"
+      - "./docker/hosts.localhost:/var/www/app/hosts.localhost"
+    ports:
+      - 9090:9090
+
+  rabbitmq:
+    container_name: "rabbitmq"
+    restart: always
+    image: rabbitmq:management
+    volumes:
+      - ./docker/rabbitmq/rabbitmq.config:/etc/rabbitmq/rabbitmq.config:ro
+      - ./docker/rabbitmq/definitions.json:/etc/rabbitmq/definitions.json:ro
+    environment:
+      RABBITMQ_DEFAULT_USER: devops
+      RABBITMQ_DEFAULT_PASS: admin
+    ports:
+      - "5672:5672"
+      - "15672:15672"

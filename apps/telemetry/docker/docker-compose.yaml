@@ -1,0 +1,37 @@
+version: '3.9'
+
+networks:
+  default:
+    name: greenthumb
+
+services:
+  db:
+    container_name: telemetry_db
+    image: postgres
+    healthcheck:
+      test:
+        [
+          'CMD',
+          'pg_isready',
+          '-q',
+          '-d',
+          'postgres',
+          '-U',
+          'root'
+        ]
+      timeout: 45s
+      interval: 10s
+      retries: 10
+    restart: always
+    environment:
+      - POSTGRES_USER=root
+      - POSTGRES_PASSWORD=password
+      - APP_DB_USER=docker
+      - APP_DB_PASS=docker
+      - APP_DB_NAME=telemetry_db
+    volumes:
+      - ./db/:/docker-entrypoint-initdb.d/
+    ports:
+      - 5334:5432
+    expose:
+      - '5432'

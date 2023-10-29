@@ -1,0 +1,13 @@
+http:
+  routers:
+    user:
+      entryPoints:
+        - web
+      rule: 'Host(`user.greenthumb`)'
+      service: user
+
+    telemetry:
+      entryPoints:
+        - web
+      rule: 'Host(`telemetry.greenthumb`)'
+      service: telemetry

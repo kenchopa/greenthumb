@@ -1,0 +1,5 @@
+#!/bin/bash
+
+readonly services=("user" "telemetry" "portal")
+readonly environments=("local")
+readonly servicesNeedHostHeader=("portal")

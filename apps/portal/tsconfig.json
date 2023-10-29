@@ -1,0 +1,14 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "composite": true,
+    "module": "ESNext",
+    "moduleResolution": "Node",
+    "target": "ESNext",
+    "lib": ["DOM", "DOM.Iterable", "ESNext"],
+    "jsx": "react",
+    "outDir": "dist",
+  },
+  "exclude": ["./node_modules/**/*"],
+  "include": ["./src/**/*", "vite.config.ts"],
+}

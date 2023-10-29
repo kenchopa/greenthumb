@@ -1,0 +1,55 @@
+#!/bin/bash
+readonly GREENTHUMB_ROOT="$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )/../../.."
+readonly APPS="$GREENTHUMB_ROOT/apps"
+
+source "$GREENTHUMB_ROOT/docker/resources/helpers/text"
+
+function errorStart() {
+    redtext "Trying to boot ${CYAN}${1}${RED}, but it is not installed through the project"
+    hasError=1
+}
+
+function echoUp {
+    yellowtext "Bringing up ${CYAN}${1}${YELLOW}..."
+}
+
+echoUp "Traefik, hosts and RabbitMQ"
+cd "$GREENTHUMB_ROOT" && docker-compose up -d traefik hosts rabbitmq
+
+hasError=0
+
+for service in "$@"
+do
+    if [[ "$service" == "user" ]]; then
+        if [ ! -d "$APPS/user" ]; then
+            errorStart "user"
+        else
+            echoUp "user"
+            cd "$APPS/user/docker" && docker compose up -d
+        fi;
+    fi;
+
+    if [[ "$service" == "telemetry" ]]; then
+        if [ ! -d "$APPS/telemetry" ]; then
+            errorStart "telemetry"
+        else
+            echoUp "telemetry"
+            cd "$APPS/telemetry/docker" && docker compose up -d
+        fi;
+    fi;
+
+    if [[ "$service" == "portal" ]]; then
+        if [ ! -d "$APPS/portal" ]; then
+            errorStart "portal"
+        else
+            echoUp "portal"
+            cd "$APPS/portal/docker" && docker compose up -d
+        fi;
+    fi;
+
+    cd "$GREENTHUMB_ROOT" || redtext "failed going back to rootdir, please re-run"
+done
+
+if [[ $hasError == 1 ]]; then
+   yellowtext "\nIt seems you tried to bring up services that weren't found."
+fi;

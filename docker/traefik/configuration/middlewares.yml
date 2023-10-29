@@ -1,0 +1,26 @@
+http:
+  middlewares:
+    forceHttps:
+      redirectScheme:
+        scheme: https
+        permanent: true
+    greenthumbHeaders:
+      headers:
+        customRequestHeaders:
+          origin: 'greenthumb.be'
+          X-Proxy-Domain: 'greenthumb.be'
+    corsHeaders:
+      headers:
+        accessControlAllowCredentials: true
+        accessControlAllowMethods:
+          - 'GET'
+          - 'POST'
+          - 'PUT'
+          - 'PATCH'
+          - 'DELETE'
+          - 'OPTIONS'
+        accessControlAllowHeaders: 'apollographql-client-name,apollographql-client-version,content-type,x-language,x-requested-with'
+        accessControlAllowOriginListRegex:
+          - 'https://(www.)?greenthumb.be'
+        accessControlMaxAge: 600
+        addVaryHeader: true

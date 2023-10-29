@@ -1,0 +1,69 @@
+#!/bin/bash
+readonly GREENTHUMB_ROOT="$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
+
+source "$GREENTHUMB_ROOT/docker/resources/helpers/text"
+
+function help() {
+   echo -e "Usage: greenthumb <command> [<args>]"
+   echo -e "\nThese are the common commands used in various situations: "
+   echo -e "\nManipulating the environment"
+   echo -e "  ${CYAN}start${NC}                 ${YELLOW}Start all or specific services${NC}"
+   echo -e "  ${CYAN}rebuild${NC}               ${YELLOW}Start all or specific services with --force-recreate and --remove-orphans${NC}"
+   echo -e "  ${CYAN}stop${NC}                  ${YELLOW}Stop all running microservices${NC}"
+   echo -e "\nOther useful helpers"
+   echo -e "  ${CYAN}logs${NC}                  ${YELLOW}Show logs of a certain service${NC}"
+   echo -e "  ${CYAN}self-update${NC}           ${YELLOW}Will self-update the greenthumb setup (git fetch)${NC}"
+}
+
+if [[ "$@" == "" ]]; then
+   echo -e "${GREEN}WebSoufflé Platform Command Line Interface${NC}\n"
+   help
+   exit 0
+fi;
+
+for command in "$@"
+do
+    if [[ "$command" == "start" ]]; then
+      "$GREENTHUMB_ROOT/docker/resources/scripts/start" "${@:2}"
+      exit 0
+    fi;
+
+    if [[ "$command" == "rebuild" ]]; then
+      "$GREENTHUMB_ROOT/docker/resources/scripts/rebuild" "${@:2}"
+      exit 0
+    fi;
+
+    if [[ "$command" == "stop" ]]; then
+      "$GREENTHUMB_ROOT/docker/resources/scripts/stop"
+      exit 0
+    fi;
+
+    if [[ "$command" == "update-certs" ]]; then
+      "$GREENTHUMB_ROOT/docker/resources/scripts/update-certs"
+      exit 0;
+    fi;
+
+    if [[ "$command" == "logs" ]]; then
+      "$GREENTHUMB_ROOT/docker/resources/scripts/logs" "${@:2}"
+      exit 0;
+    fi;
+
+    if [[ "$command" == "self-update" ]]; then
+      yellowtext "Fetching latest commits from git"
+      cd "$GREENTHUMB_ROOT" && git fetch
+      exit 0;
+    fi;
+
+    if [[ "$command" == "dir" ]]; then
+      echo "$GREENTHUMB_ROOT"
+      exit 0
+    fi;
+
+    if [[ "$command" == "debug" ]]; then
+      echo "$GREENTHUMB_ROOT/greenthumb [command] ${@:2}"
+      exit 0
+    fi;
+
+    redtext "Unknown command ${CYAN}${@:1}${NC}"
+    help
+done;

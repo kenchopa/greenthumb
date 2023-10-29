@@ -1,0 +1,12 @@
+http:
+  routers:
+    greenthumb-bff:
+      tls: true
+      middlewares:
+        - corsHeaders
+        - greenthumbHeaders
+      entryPoints:
+        - web
+        - webSecure
+      rule: 'HostRegexp(`greenthumb.be`,`{subdomain:[a-z-]+}.greenthumb.be`) && (Path(`/graphql`) || Path(`/login`) || Path(`/logout`))'
+      service: portal-bff

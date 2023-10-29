@@ -1,0 +1,8 @@
+http:
+  services:
+    portal:
+      loadBalancer:
+        serversTransport: insecureHttpsTransport
+        passHostHeader: true
+        servers:
+          - url: "http://portal:3000"

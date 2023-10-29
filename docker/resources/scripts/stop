@@ -1,0 +1,23 @@
+#!/bin/bash
+readonly GREENTHUMB_ROOT="$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )/../../.."
+readonly APPS="$GREENTHUMB_ROOT/apps"
+
+source "$GREENTHUMB_ROOT/docker/resources/helpers/text"
+
+if [[ -d "$APPS/user/docker" ]]; then
+    yellowtext "Stopping ${CYAN}user${YELLOW}..."
+    cd "$APPS/user/docker" && docker-compose stop
+fi;
+
+if [[ -d "$APPS/telemetry/docker" ]]; then
+    yellowtext "Stopping ${CYAN}telemetry${YELLOW}..."
+    cd "$APPS/telemetry/docker" && docker-compose stop
+fi;
+
+if [[ -d "$APPS/portal/docker" ]]; then
+    yellowtext "Stopping ${CYAN}portal${YELLOW}..."
+    cd "$APPS/portal/docker" && docker-compose stop
+fi;
+
+yellowtext "Stopping ${CYAN}RabbitMQ${YELLOW}..."
+cd "$GREENTHUMB_ROOT" && docker-compose stop

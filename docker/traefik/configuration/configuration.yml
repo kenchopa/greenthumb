@@ -1,0 +1,15 @@
+tls:
+  certificates:
+    - certFile: /app/cert/greenthumb.be.crt
+      keyFile: /app/cert/greenthumb.be.key
+http:
+  serversTransports:
+    insecureHttpsTransport:
+      maxIdleConnsPerHost: 20
+      insecureSkipVerify: true
+  services:
+    portal:
+      loadBalancer:
+        serversTransport: insecureHttpsTransport
+        servers:
+          - url: 'http://portal:3000'

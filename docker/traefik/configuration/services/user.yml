@@ -1,0 +1,8 @@
+http:
+  services:
+    user:
+      loadBalancer:
+        serversTransport: insecureHttpsTransport
+        passHostHeader: false
+        servers:
+          - url: "http://user:3000"

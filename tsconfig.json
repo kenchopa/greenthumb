@@ -1,0 +1,32 @@
+{
+    "compilerOptions": {
+      "useDefineForClassFields": true,
+      "target": "es2019",
+      "module": "commonjs",
+      "allowJs": false,
+      "skipLibCheck": true,
+      "esModuleInterop": true,
+      "allowSyntheticDefaultImports": true,
+      "strict": true,
+      "forceConsistentCasingInFileNames": true,
+      "resolveJsonModule": true,
+      "isolatedModules": true,
+      "sourceMap": true,
+      "experimentalDecorators": true,
+      "emitDecoratorMetadata": true,
+      "strictPropertyInitialization": false,
+      "noImplicitAny": true,
+    },
+    "include": ["./apps/user/src/**/*.ts"],
+    "references": [
+      {"path": "apps/portal"},
+      {"path": "apps/telemetry"},
+      {"path": "apps/user"},
+      {"path": "packages/auth"},
+      {"path": "packages/core"},
+      {"path": "packages/delayer"},
+      {"path": "packages/logger"},
+      {"path": "packages/tracer"},
+    ]
+}
+  

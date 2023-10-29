@@ -1,0 +1,8 @@
+http:
+  services:
+    telemetry:
+      loadBalancer:
+        serversTransport: insecureHttpsTransport
+        passHostHeader: false
+        servers:
+          - url: 'http://telemetry:3000'

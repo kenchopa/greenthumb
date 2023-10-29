@@ -1,0 +1,11 @@
+{
+  "name": "@greenthumb/event-worker",
+  "dependencies": {
+    "@greenthumb/core": "workspace:*",
+    "typeorm": "^0.3.11",
+    "uuid": "^9.0.0"
+  },
+  "devDependencies": {
+    "@types/uuid": "^9.0.0"
+  }
+}

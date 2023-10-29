@@ -1,0 +1,11 @@
+{
+  "name": "@greenthumb/tracer",
+  "dependencies": {
+    "@greenthumb/logger": "workspace:*",
+    "jaeger-client": "^3.19.0",
+    "opentracing": "^0.14.7"
+  },
+  "devDependencies": {
+    "@types/jaeger-client": "^3.18.4"
+  }
+}

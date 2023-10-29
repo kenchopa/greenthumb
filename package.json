@@ -1,0 +1,35 @@
+{
+  "name": "greenthumb",
+  "version": "1.0.0",
+  "description": "The monorepo for storing all related apps about project greenthumb",
+  "engines": {
+    "node": "20.x"
+  },
+  "scripts": {
+    "clean": "find . -name 'node_modules' -type d -prune -exec rm -rf '{}' +",
+    "portal": "pnpm --filter @greenthumb/portal",
+    "user": "pnpm --filter @greenthumb/user",
+    "telemetry": "pnpm --filter @greenthumb/telemetry",
+    "dev": "pnpm --recursive --parallel --stream run dev",
+    "build": "pnpm --recursive --parallel --stream run build"
+  },
+  "keywords": [],
+  "author": "Kengy Van Hijfte",
+  "license": "ISC",
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.49.0",
+    "@typescript-eslint/parser": "^5.49.0",
+    "eslint": "^8.32.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-config-prettier": "^8.6.0",
+    "eslint-import-resolver-typescript": "^3.5.3",
+    "eslint-plugin-import": "^2.27.5",
+    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-simple-import-sort": "^9.0.0",
+    "eslint-plugin-sort-keys-fix": "^1.1.2",
+    "nodemon": "^2.0.20",
+    "prettier": "^2.8.3",
+    "ts-node": "^10.9.1",
+    "typescript": "^4.9.3"
+  }
+}

@@ -1,0 +1,17 @@
+http:
+  routers:
+    greenthumb_be:
+      middlewares:
+        - forceHttps
+      entryPoints:
+        - web
+      rule: "HostRegexp(`greenthumb.be`,`{subdomain:[a-z-]+}.greenthumb.be`)"
+      service: portal
+    greenthumb_be_https:
+      tls: true
+      middlewares:
+        - corsHeaders
+      entryPoints:
+        - webSecure
+      rule: "HostRegexp(`greenthumb.be`,`{subdomain:[a-z-]+}.greenthumb.be`)"
+      service: portal
