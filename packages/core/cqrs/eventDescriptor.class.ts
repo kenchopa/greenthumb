@@ -1,7 +1,7 @@
 import type { StorageEvent } from './event.processor';
-import type { IEvent } from './interfaces';
+import type { EventInterface } from './interfaces';
 
-export default class EventDescriptor implements IEvent {
+export default class EventDescriptor implements EventInterface {
   constructor(
     public readonly aggregateId: string,
     public readonly aggregateName: string,

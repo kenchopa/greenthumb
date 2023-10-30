@@ -1,4 +1,4 @@
-export interface IRepository<T> {
+export interface RepositoryInterface<T> {
   save(aggregateRoot: T, expectedVersion: number): void;
   getById(guid: string): Promise<T>;
 }

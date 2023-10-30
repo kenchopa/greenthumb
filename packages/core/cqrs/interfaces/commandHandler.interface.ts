@@ -1,6 +1,8 @@
-import { ICommand } from './command.interface';
+import { CommandInterface } from './command.interface';
 
-export interface ICommandHandler<TCommand extends ICommand = any> {
+export interface CommandHandlerInterface<
+  TCommand extends CommandInterface = any,
+> {
   commandToHandle: string;
   handle(command: TCommand): any;
 }

@@ -1,25 +1,25 @@
 import { v4 as uuidV4 } from 'uuid';
 
-import { IEvent } from './interfaces/event.interface';
+import { EventInterface } from './interfaces/event.interface';
 
 export default abstract class AggregateRoot {
   [x: string]: any;
 
-  public guid: string;
+  public id: string;
 
   private __version = -1;
 
-  private __changes: any[] = [];
+  private __changes: EventInterface[] = [];
+
+  constructor(id?: string) {
+    this.id = id || uuidV4();
+  }
 
   get version() {
     return this.__version;
   }
 
-  constructor(guid?: string) {
-    this.guid = guid || uuidV4();
-  }
-
-  public getUncommittedEvents(): IEvent[] {
+  public getUncommittedEvents(): EventInterface[] {
     return this.__changes;
   }
 
@@ -27,16 +27,16 @@ export default abstract class AggregateRoot {
     this.__changes = [];
   }
 
-  protected applyChange(event: IEvent) {
+  protected applyChange(event: EventInterface) {
     this.applyEvent(event, true);
   }
 
-  private applyEvent(event: IEvent, isNew = false) {
+  private applyEvent(event: EventInterface, isNew = false) {
     this[`apply${event.eventName}`](event);
     if (isNew) this.__changes.push(event);
   }
 
-  public loadFromHistory(events: IEvent[]) {
+  public loadFromHistory(events: EventInterface[]) {
     for (const event of events) {
       this.applyEvent(event);
       this.__version += 1;

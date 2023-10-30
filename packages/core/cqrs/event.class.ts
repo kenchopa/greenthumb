@@ -1,4 +1,4 @@
-import { IEvent } from './interfaces/event.interface';
+import { EventInterface } from './interfaces/event.interface';
 
 export type EventMetaData =
   | 'eventName'
@@ -13,7 +13,7 @@ export const EVENT_METADATA = [
   'version',
 ];
 
-export abstract class Event implements IEvent {
+export abstract class Event implements EventInterface {
   public abstract eventName: string;
 
   public abstract aggregateName: string;

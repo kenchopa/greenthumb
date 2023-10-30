@@ -1,6 +1,9 @@
-import { IQuery } from './query.interface';
+import { QueryInterface } from './query.interface';
 
-export interface IQueryHandler<T extends IQuery = any, R = any> {
+export interface QueryHandlerInterface<
+  T extends QueryInterface = any,
+  R = any,
+> {
   queryToHandle: string;
   execute(query: T): Promise<R>;
 }

@@ -1,6 +1,6 @@
-import { IMessage } from './message.interface';
+import { MessageInterface } from './message.interface';
 
-export interface IEvent extends IMessage {
+export interface EventInterface extends MessageInterface {
   eventName: string;
   aggregateName: string;
   aggregateId: string;

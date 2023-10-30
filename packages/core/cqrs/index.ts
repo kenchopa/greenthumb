@@ -1,5 +1,5 @@
 export { default as AggregateRoot } from './aggregateRoot.class';
-export { default as Command } from './command.class';
+export { default as Command } from './command.abstract';
 export * from './event.class';
 export * from './event.processor';
 export { default as EventDescriptor } from './eventDescriptor.class';

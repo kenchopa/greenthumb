@@ -7,15 +7,15 @@ import {
   rehydrateEventFromDescriptor,
 } from './event.processor';
 import EventDescriptor from './eventDescriptor.class';
-import { IEvent } from './interfaces/event.interface';
-import { IEventBus } from './interfaces/eventBus.interface';
-import { IEventStore } from './interfaces/eventStore.interface';
+import { EventInterface } from './interfaces/event.interface';
+import { EventBusInterface } from './interfaces/eventBus.interface';
+import { EventStoreInterface } from './interfaces/eventStore.interface';
 
 @injectable()
-export default abstract class EventStore implements IEventStore {
+export default abstract class EventStore implements EventStoreInterface {
   constructor(
     @unmanaged() private readonly eventCollection: Collection,
-    @unmanaged() private readonly _eventBus: IEventBus,
+    @unmanaged() private readonly _eventBus: EventBusInterface,
   ) {}
 
   async saveEvents(
@@ -53,7 +53,7 @@ export default abstract class EventStore implements IEventStore {
     await this.eventCollection.bulkWrite(operations);
   }
 
-  async getEventsForAggregate(aggregateId: string): Promise<IEvent[]> {
+  async getEventsForAggregate(aggregateId: string): Promise<EventInterface[]> {
     const pipeline = [
       { $match: { aggregateId } },
       {
@@ -77,15 +77,8 @@ export default abstract class EventStore implements IEventStore {
       );
     }
 
-    return eventDescriptors.map(
-      (descriptor: any) =>
-        new EventDescriptor(
-          descriptor.aggregateId,
-          descriptor.aggregateName,
-          descriptor.eventName,
-          descriptor.payload,
-          descriptor.version,
-        ),
+    return eventDescriptors.map((descriptor: any) =>
+      rehydrateEventFromDescriptor(descriptor as EventDescriptor),
     );
   }
 

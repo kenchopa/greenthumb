@@ -1,6 +1,6 @@
-import { IEvent } from './event.interface';
+import { EventInterface } from './event.interface';
 
-export interface IEventHandler<T extends IEvent> {
+export interface EventHandlerInterface<T extends EventInterface> {
   event: string;
   handle(event: T): void;
 }

@@ -1,6 +1,6 @@
-import { IEvent } from './event.interface';
+import { EventInterface } from './event.interface';
 
-export interface IEventStore<T extends IEvent = any> {
+export interface EventStoreInterface<T extends EventInterface = any> {
   saveEvents(aggregateId: string, eventHistory: T[], version: number): void;
   getEventsForAggregate(aggregateId: string): Promise<T[]>;
 }

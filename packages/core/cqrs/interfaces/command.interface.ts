@@ -1,5 +1,5 @@
-import { IMessage } from './message.interface';
+import { MessageInterface } from './message.interface';
 
-export interface ICommand extends IMessage {
-  guid: string;
+export interface CommandInterface extends MessageInterface {
+  id: string;
 }

@@ -2,14 +2,14 @@ import { instanceToPlain, plainToInstance } from 'class-transformer';
 
 import { EVENT_METADATA, EventMetaData } from './event.class';
 import EventDescriptor from './eventDescriptor.class';
-import { IEvent } from './interfaces/event.interface';
+import { EventInterface } from './interfaces/event.interface';
 
-export type StorageEvent = Omit<IEvent, EventMetaData>;
+export type StorageEvent = Omit<EventInterface, EventMetaData>;
 export class RehydratedEvent {}
 
-export function createEventDescriptor<T extends IEvent = IEvent>(
-  event: T,
-): EventDescriptor {
+export function createEventDescriptor<
+  T extends EventInterface = EventInterface,
+>(event: T): EventDescriptor {
   const JSONEvent = instanceToPlain(event);
 
   for (const attribute of EVENT_METADATA) {
@@ -27,7 +27,7 @@ export function createEventDescriptor<T extends IEvent = IEvent>(
 
 export function rehydrateEventFromDescriptor(
   storageEvent: EventDescriptor,
-): IEvent {
+): EventInterface {
   const event: any = plainToInstance(RehydratedEvent, storageEvent);
   return {
     aggregateId: storageEvent.aggregateId,

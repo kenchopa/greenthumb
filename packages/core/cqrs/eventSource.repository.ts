@@ -1,15 +1,15 @@
 import { injectable, unmanaged } from 'inversify';
 
 import AggregateRoot from './aggregateRoot.class';
-import { IEventStore } from './interfaces/eventStore.interface';
-import { IRepository } from './interfaces/repository.interface';
+import { EventStoreInterface } from './interfaces/eventStore.interface';
+import { RepositoryInterface } from './interfaces/repository.interface';
 
 @injectable()
 export default class EventSourcedRepository<T extends AggregateRoot>
-  implements IRepository<T>
+  implements RepositoryInterface<T>
 {
   constructor(
-    @unmanaged() private readonly eventStore: IEventStore,
+    @unmanaged() private readonly eventStore: EventStoreInterface,
     @unmanaged() private readonly Type: { new (): T },
   ) {}
 
