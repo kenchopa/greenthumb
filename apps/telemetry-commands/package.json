@@ -1,0 +1,27 @@
+{
+  "name": "@greenthumb/telemetry-commands",
+  "description": "Contains a microservice for the telemetry commands (CQRS - ES).",
+  "main": "src/index.ts",
+  "scripts": {
+    "prebuild": "npm run clean",
+    "build": "tsc",
+    "clean": "rimraf dist coverage",
+    "debug": "nodemon --watch src --ext js,ts,json --watch .env --delay 80ms --exec 'tsc && NODE_ENV=development node --inspect=0.0.0.0:9229 dist/index.js'",
+    "dev": "nodemon --watch .env --delay 80ms --watch src --ext js,ts,json --exec 'NODE_ENV=development ts-node src/index.ts'",
+    "prestart": "npm run build",
+    "start": "NODE_ENV=production node dist/index.js",
+    "lint": "eslint src/**/* --ext js,ts",
+    "lint:fix": "npm run lint -- --fix"
+  },
+  "dependencies": {
+    "@greenthumb/auth": "workspace:*",
+    "@greenthumb/core": "workspace:*",
+    "@greenthumb/delayer": "workspace:*",
+    "@greenthumb/logger": "workspace:*",
+    "class-transformer": "^0.5.1",
+    "dotenv": "^16.0.3",
+    "inversify": "^6.0.2",
+    "inversify-express-utils": "^6.4.5",
+    "reflect-metadata": "^0.1.13"
+  }
+}

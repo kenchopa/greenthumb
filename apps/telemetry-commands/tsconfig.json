@@ -1,0 +1,12 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "composite": true,
+    "target": "es2019",
+    "module": "commonjs",
+    "typeRoots": ["node_modules/@types"],
+    "outDir": "dist",
+  },
+  "include": ["./src/**/*.ts", "./src/**/*.*.ts", "./src/**/*.d.ts"],
+  "exclude": ["node_modules/**/*"],
+}
