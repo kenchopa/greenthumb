@@ -1,4 +1,4 @@
-import { ICommand } from './ICommand';
+import { ICommand } from './command.interface';
 
 export interface ICommandHandler<TCommand extends ICommand = any> {
   commandToHandle: string;

@@ -1,8 +1,8 @@
 import { instanceToPlain, plainToInstance } from 'class-transformer';
 
-import { EVENT_METADATA, EventMetaData } from '../Event';
-import EventDescriptor from '../EventDescriptor';
-import { IEvent } from '../interfaces/IEvent';
+import { EVENT_METADATA, EventMetaData } from './event.class';
+import EventDescriptor from './eventDescriptor.class';
+import { IEvent } from './interfaces/event.interface';
 
 export type StorageEvent = Omit<IEvent, EventMetaData>;
 export class RehydratedEvent {}
@@ -30,7 +30,7 @@ export function rehydrateEventFromDescriptor(
 ): IEvent {
   const event: any = plainToInstance(RehydratedEvent, storageEvent);
   return {
-    aggregateId: storageEvent.aggregateGuid,
+    aggregateId: storageEvent.aggregateId,
     aggregateName: storageEvent.aggregateName,
     eventName: storageEvent.eventName,
     version: storageEvent.version,

@@ -1,4 +1,4 @@
-import { IQuery } from './IQuery';
+import { IQuery } from './query.interface';
 
 export interface IQueryHandler<T extends IQuery = any, R = any> {
   queryToHandle: string;

@@ -1,4 +1,4 @@
-import { IMessage } from './IMessage';
+import { IMessage } from './message.interface';
 
 export interface IEvent extends IMessage {
   eventName: string;

@@ -309,6 +309,12 @@ importers:
       '@greenthumb/tracer':
         specifier: workspace:*
         version: link:../tracer
+      class-transformer:
+        specifier: ^0.5.1
+        version: 0.5.1
+      inversify:
+        specifier: ^6.0.2
+        version: 6.0.2
       joi:
         specifier: ^17.7.0
         version: 17.7.0
@@ -333,9 +339,15 @@ importers:
       koa-router:
         specifier: ^12.0.0
         version: 12.0.0
+      mongodb:
+        specifier: ^6.2.0
+        version: 6.2.0
       opentracing:
         specifier: ^0.14.7
         version: 0.14.7
+      uuid:
+        specifier: ^9.0.0
+        version: 9.0.0
     devDependencies:
       '@types/koa':
         specifier: ^2.13.5
@@ -358,6 +370,9 @@ importers:
       '@types/koa-router':
         specifier: ^7.4.4
         version: 7.4.4
+      '@types/uuid':
+        specifier: ^9.0.0
+        version: 9.0.0
 
   packages/delayer: {}
 
@@ -4438,12 +4453,6 @@ packages:
     engines: {node: ^10 || ^12 || ^13.7 || ^14 || >=15.0.1}
     hasBin: true
     dev: true
-
-  /nanoid@5.0.2:
-    resolution: {integrity: sha512-2ustYUX1R2rL/Br5B/FMhi8d5/QzvkJ912rBYxskcpu0myTHzSZfTr1LAS2Sm7jxRUObRrSBFoyzwAhL49aVSg==}
-    engines: {node: ^18 || >=20}
-    hasBin: true
-    dev: false
 
   /natural-compare-lite@1.4.0:
     resolution: {integrity: sha512-Tj+HTDSJJKaZnfiuw+iaF9skdPpTo2GtEly5JHnWV/hfv2Qj/9RKsGISQtLh2ox3l5EAGw487hnBee0sIJ6v2g==}

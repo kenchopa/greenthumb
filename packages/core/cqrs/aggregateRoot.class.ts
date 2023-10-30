@@ -1,6 +1,6 @@
-import { nanoid } from 'nanoid';
+import { v4 as uuidV4 } from 'uuid';
 
-import { IEvent } from './interfaces/IEvent';
+import { IEvent } from './interfaces/event.interface';
 
 export default abstract class AggregateRoot {
   [x: string]: any;
@@ -16,7 +16,7 @@ export default abstract class AggregateRoot {
   }
 
   constructor(guid?: string) {
-    this.guid = guid || nanoid();
+    this.guid = guid || uuidV4();
   }
 
   public getUncommittedEvents(): IEvent[] {
