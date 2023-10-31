@@ -15,7 +15,7 @@ export default class EventSourcedRepository<T extends AggregateRoot>
 
   async save(aggregateRoot: T, expectedVersion: number) {
     this.eventStore.saveEvents(
-      aggregateRoot.guid,
+      aggregateRoot.id,
       aggregateRoot.getUncommittedEvents(),
       expectedVersion,
     );
