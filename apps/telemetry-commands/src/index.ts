@@ -1,19 +1,19 @@
 import 'reflect-metadata';
 
-import * as dotenv from 'dotenv';
+import { EventBusInterface } from '@greenthumb/core';
+import logger from '@greenthumb/logger';
 
-import initialise from './app';
-
-dotenv.config();
+import config from './config';
+import initialise from './main';
+import TYPES from './types';
 
 // eslint-disable-next-line @typescript-eslint/no-floating-promises
 (async () => {
-  console.log('Hello world');
-  const container = await initialise();
+  logger.debug(`Booting up container for ${config.APP.SERVICE_NAME}...`);
 
-  /* const container = await initialise();
+  const container = await initialise();
 
   const baseEventHandler = container.get<EventBusInterface>(TYPES.EventBus);
 
-  baseEventHandler.subscribeEvents(); */
+  await baseEventHandler.subscribeEvents();
 })();

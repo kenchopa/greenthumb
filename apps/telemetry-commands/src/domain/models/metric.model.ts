@@ -61,15 +61,17 @@ export type MetricAttributes =
   | LightAttributes;
 
 export default class Metric extends AggregateRoot {
-  private type!: MetricType;
+  private type?: MetricType;
 
-  private attributes!: MetricAttributes;
+  private attributes?: MetricAttributes;
 
-  private createdAt!: Date;
+  private createdAt?: Date;
 
   private updatedAt?: Date;
 
-  constructor(id: string, type: MetricType, attributes: MetricAttributes) {
+  constructor(id?: string, type?: MetricType, attributes?: MetricAttributes);
+
+  constructor(id?: string, type?: MetricType, attributes?: MetricAttributes) {
     super(id);
     this.type = type;
     this.attributes = attributes;

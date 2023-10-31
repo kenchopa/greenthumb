@@ -16,17 +16,17 @@ import MetricRepository from './repositories/metric.repository';
 
 const infrastructureModule = new AsyncContainerModule(
   async (bind: interfaces.Bind) => {
-    const db: Db = await createMongodbConnection(config.MONGODB_URI);
+    const db: Db = await createMongodbConnection(config.MONGODB.URI);
     const cassandra: Client = createCassandraClient(
-      config.CASSANDRA_HOSTS,
-      config.CASSANDRA_DC,
-      config.CASSANDRA_KEYSPACE,
+      config.CASSANDRA.HOSTS,
+      config.CASSANDRA.DC,
+      config.CASSANDRA.KEYSPACE,
     );
 
-    const kafka = new Kafka({ brokers: config.KAFKA_BROKER_LIST.split(',') });
+    const kafka = new Kafka({ brokers: config.KAFKA.BROKER_LIST.split(',') });
     const kafkaProducer = kafka.producer();
     const kafkaConsumer = kafka.consumer({
-      groupId: config.KAFKA_CONSUMER_GROUP_ID,
+      groupId: config.KAFKA.CONSUMER_GROUP_ID,
     });
     await kafkaProducer.connect();
 
@@ -34,7 +34,7 @@ const infrastructureModule = new AsyncContainerModule(
     bind<Client>(TYPES.CassandraDb).toConstantValue(cassandra);
     bind<Producer>(TYPES.KafkaProducer).toConstantValue(kafkaProducer);
     bind<Consumer>(TYPES.KafkaConsumer).toConstantValue(kafkaConsumer);
-    bind<Redis>(TYPES.Redis).toConstantValue(new RedisClient(config.REDIS_URI));
+    bind<Redis>(TYPES.Redis).toConstantValue(new RedisClient(config.REDIS.URI));
     // bind<EventBusInterface>(TYPES.EventBus).to(KafkaEventBus);
     bind<MetricEventStore>(TYPES.MetricEventStore) // todo: implement MetricEventStoreInterface
       .to(MetricEventStore)

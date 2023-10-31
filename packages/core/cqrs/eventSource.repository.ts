@@ -22,9 +22,9 @@ export default class EventSourcedRepository<T extends AggregateRoot>
     aggregateRoot.markChangesAsCommitted();
   }
 
-  async getById(guid: string) {
+  async getById(id: string) {
     const aggregateRoot = new this.Type() as T;
-    const history = await this.eventStore.getEventsForAggregate(guid);
+    const history = await this.eventStore.getEventsForAggregate(id);
 
     aggregateRoot.loadFromHistory(history);
 
