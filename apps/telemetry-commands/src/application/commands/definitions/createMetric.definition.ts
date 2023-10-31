@@ -1,13 +1,26 @@
 import { Command } from '@greenthumb/core';
 
+import {
+  MetricAttributes,
+  MetricType,
+} from '../../../domain/models/metric.model';
+
 export default class CreateMetricCommand extends Command {
-  public title: string;
+  private type!: MetricType;
 
-  public description: string;
+  private attributes!: MetricAttributes;
 
-  constructor(title: string, description: string, id?: string) {
+  constructor(id: string, type: MetricType, attributes: MetricAttributes) {
     super(id);
-    this.title = title;
-    this.description = description;
+    this.type = type;
+    this.attributes = attributes;
+  }
+
+  public getType(): MetricType {
+    return this.type;
+  }
+
+  public getAttributes(): MetricAttributes {
+    return this.attributes;
   }
 }

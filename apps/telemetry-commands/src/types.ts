@@ -1,14 +1,22 @@
 const TYPES = {
+  ApiServer: Symbol('ApiServer'),
+  CassandraDb: Symbol('CassandraDb'),
   CommandBus: Symbol('CommandBus'),
   CommandHandler: Symbol('CommandHandler'),
+  Db: Symbol('Db'),
   Event: Symbol('Event'),
   EventBus: Symbol('EventBus'),
   EventHandler: Symbol('EventHandler'),
   EventStore: Symbol('EventStore'),
-  JobEventStore: Symbol('JobEventStore'),
-  JobRepository: Symbol('JobRepository'),
+  KafkaConsumer: Symbol('KafkaConsumer'),
+  KafkaProducer: Symbol('KafkaProducer'),
+  Logger: Symbol('Logger'),
+  MetricEventStore: Symbol('JobEventStore'),
+  MetricRepository: Symbol('JobRepository'),
   QueryBus: Symbol('QueryBus'),
   QueryHandler: Symbol('QueryHandler'),
+  Redis: Symbol('Redis'),
+  RedisSubscriber: Symbol('RedisSubscriber'),
 };
 
 export default TYPES;

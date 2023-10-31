@@ -26,7 +26,7 @@ type NpmCliLevel =
   | 'input'
   | 'silly';
 
-type Logger = Omit<winston.Logger, NpmCliLevel>;
+export type LoggerInterface = Omit<winston.Logger, NpmCliLevel>;
 
 const DEFAULT_LEVEL = 'debug';
 
@@ -37,7 +37,9 @@ const DEFAULT_LEVEL = 'debug';
  * properties that should be set as keys with a getter function as a
  * value
  */
-export function createLogger({ additionalProperties }: Options = {}): Logger {
+export function createLogger({
+  additionalProperties,
+}: Options = {}): LoggerInterface {
   const level = getLogLevel();
   const outputFormat = getOutputFormat();
   const silent = getSilent();

@@ -20,7 +20,7 @@ export default abstract class EventStore implements EventStoreInterface {
 
   async saveEvents(
     aggregateId: string,
-    events: IEvent[],
+    events: EventInterface[],
     expectedVersion: number,
   ) {
     const operations: any[] = [];

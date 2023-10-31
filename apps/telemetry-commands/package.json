@@ -18,10 +18,15 @@
     "@greenthumb/core": "workspace:*",
     "@greenthumb/delayer": "workspace:*",
     "@greenthumb/logger": "workspace:*",
+    "cassandra-driver": "^4.7.2",
     "class-transformer": "^0.5.1",
     "dotenv": "^16.0.3",
     "inversify": "^6.0.2",
     "inversify-express-utils": "^6.4.5",
+    "ioredis": "^5.3.2",
+    "kafkajs": "^2.2.4",
+    "module-alias": "^2.2.3",
+    "mongodb": "^6.2.0",
     "reflect-metadata": "^0.1.13"
   }
 }

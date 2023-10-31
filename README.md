@@ -29,5 +29,17 @@ install a dev dependency on a filtered app
 link a package to an app
 
 ```bash
-    pnpm --filter @greenthumb/telemetry "add" "@greenthumb/delayer@workspace:*" 
+    pnpm --filter @greenthumb/telemetry "add" "@greenthumb/delayer@workspace:*"
 ```
+
+## Technologies
+
+- Technologies
+- Node.js
+- TypeScript
+- MongoDB with MongoDB native driver as an event store - (mongodb package on NPM)
+- InversifyJS as an IoC container
+- Express (via Inversify Express Utils) as an API - framework
+- Redis as a read store for application microservice
+- Apache Cassandra as a read store for job microservice
+- Apache Kafka as a message broker / event bus
