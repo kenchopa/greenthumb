@@ -1,4 +1,4 @@
-import { HttpError, HttpStatusCode } from '@greenthumb/core';
+import { HttpError, HttpStatusCode } from '@greenthumb/errors';
 
 export default class RefreshTokenExpiredError extends HttpError {
   constructor(message: string) {

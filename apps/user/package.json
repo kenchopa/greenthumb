@@ -35,6 +35,7 @@
   "dependencies": {
     "@greenthumb/auth": "workspace:*",
     "@greenthumb/core": "workspace:*",
+    "@greenthumb/errors": "workspace:^",
     "@greenthumb/logger": "workspace:*",
     "@greenthumb/tracer": "workspace:*",
     "axios": "^1.2.5",

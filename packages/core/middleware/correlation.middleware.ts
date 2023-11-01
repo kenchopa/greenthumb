@@ -1,6 +1,5 @@
+import { BadRequestError } from '@greenthumb/errors';
 import { Context, Next } from 'koa';
-
-import BadRequestError from '../errors/http/badRequest.error';
 
 export default function makeCorrelationMiddleware() {
   return async (ctx: Context, next: Next) => {

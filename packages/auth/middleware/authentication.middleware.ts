@@ -1,4 +1,5 @@
-import { Token, UnauthorizedError } from '@greenthumb/core';
+import { Token } from '@greenthumb/core';
+import { UnauthorizedError } from '@greenthumb/errors';
 import { Context, Next } from 'koa';
 
 import validateToken from '../services/tokenValidator.service';

@@ -1,12 +1,13 @@
+import {
+  ApiProblem,
+  HttpError,
+  HttpStatusCode,
+  InternalServerError,
+  MethodNotAllowedError,
+  NotFoundError,
+} from '@greenthumb/errors';
 import logger from '@greenthumb/logger';
 import { Context, Next } from 'koa';
-
-import { ApiProblem } from '../errors/apiProblem.class';
-import HttpError from '../errors/http.error';
-import InternalServerError from '../errors/http/internalServer.error';
-import MethodNotAllowedError from '../errors/http/methodNotAllowed.error';
-import NotFoundError from '../errors/http/notFound.error';
-import HttpStatusCode from '../errors/httpStatusCode.enum';
 
 const processRequest = async (next: Next) => {
   try {

@@ -1,4 +1,4 @@
-import { EventBusInterface, EventStore } from '@greenthumb/core';
+import { EventBusInterface, EventStore } from '@greenthumb/cqrs';
 import { inject, injectable } from 'inversify';
 import { Db } from 'mongodb';
 

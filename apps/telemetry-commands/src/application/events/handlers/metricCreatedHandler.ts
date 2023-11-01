@@ -1,4 +1,4 @@
-import { EventHandlerInterface } from '@greenthumb/core';
+import { EventHandlerInterface } from '@greenthumb/cqrs';
 import { LoggerInterface } from '@greenthumb/logger';
 import { Client } from 'cassandra-driver';
 import { inject, injectable } from 'inversify';

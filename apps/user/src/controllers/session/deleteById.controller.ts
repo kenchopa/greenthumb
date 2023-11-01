@@ -1,4 +1,5 @@
-import { actionHandler, HttpStatusCode, Token } from '@greenthumb/core';
+import { actionHandler, Token } from '@greenthumb/core';
+import { HttpStatusCode } from '@greenthumb/errors';
 import { Context } from 'koa';
 import { Span } from 'opentracing';
 

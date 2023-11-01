@@ -1,4 +1,4 @@
-import { CommandHandlerInterface } from '@greenthumb/core';
+import { CommandHandlerInterface } from '@greenthumb/cqrs';
 import { inject, injectable } from 'inversify';
 
 import Metric from '../../../domain/models/metric.model';

@@ -1,6 +1,6 @@
 import 'reflect-metadata';
 
-import { EventBusInterface } from '@greenthumb/core';
+import { EventBusInterface } from '@greenthumb/cqrs';
 import logger from '@greenthumb/logger';
 
 import config from './config';

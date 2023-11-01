@@ -1,3 +1,4 @@
+import { HttpError, HttpStatusCode } from '@greenthumb/errors';
 import {
   type TracerContext,
   createControllerSpan,
@@ -6,8 +7,6 @@ import {
 import { Context, DefaultState } from 'koa';
 import { Span } from 'opentracing';
 
-import HttpError from '../errors/http.error';
-import HttpStatusCode from '../errors/httpStatusCode.enum';
 import { RequestRules } from '../middleware/validate.middleware';
 
 export declare type Request = {

@@ -3,7 +3,7 @@ import {
   CommandHandlerInterface,
   CommandInterface,
   EventHandlerInterface,
-} from '@greenthumb/core';
+} from '@greenthumb/cqrs';
 import logger, { LoggerInterface } from '@greenthumb/logger';
 import { Container } from 'inversify';
 

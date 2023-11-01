@@ -1,8 +1,6 @@
+import { BadRequestError, HttpStatusCode } from '@greenthumb/errors';
 import { ObjectSchema, ValidationErrorItem, ValidationOptions } from 'joi';
 import { Context, Next } from 'koa';
-
-import BadRequestError from '../errors/http/badRequest.error';
-import HttpStatusCode from '../errors/httpStatusCode.enum';
 
 enum RequestProperty {
   PARAMS = 'params',

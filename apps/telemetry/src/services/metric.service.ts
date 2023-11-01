@@ -1,4 +1,4 @@
-import { HttpError, HttpStatusCode } from '@greenthumb/core';
+import { HttpError, HttpStatusCode } from '@greenthumb/errors';
 import { createServiceSpan } from '@greenthumb/tracer';
 import { Span } from 'opentracing';
 

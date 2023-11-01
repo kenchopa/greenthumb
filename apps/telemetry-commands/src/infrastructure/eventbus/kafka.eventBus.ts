@@ -4,7 +4,7 @@ import {
   EventHandlerInterface,
   EventInterface,
   rehydrateEventFromDescriptor,
-} from '@greenthumb/core';
+} from '@greenthumb/cqrs';
 import { instanceToPlain } from 'class-transformer';
 import { inject, injectable, multiInject } from 'inversify';
 import { Consumer, Producer } from 'kafkajs';

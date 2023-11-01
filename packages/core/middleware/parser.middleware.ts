@@ -1,6 +1,5 @@
+import { BadRequestError } from '@greenthumb/errors';
 import koaBodyParser from 'koa-bodyparser';
-
-import BadRequestError from '../errors/http/badRequest.error';
 
 export default function makeBodyParserMiddleware() {
   return koaBodyParser({

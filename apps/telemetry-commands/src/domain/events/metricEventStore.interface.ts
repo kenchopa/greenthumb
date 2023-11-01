@@ -1,4 +1,4 @@
-import { EventStoreInterface } from '@greenthumb/core';
+import { EventStoreInterface } from '@greenthumb/cqrs';
 
 import Metric from '../models/metric.model';
 

@@ -1,4 +1,4 @@
-import { RepositoryInterface } from '@greenthumb/core';
+import { RepositoryInterface } from '@greenthumb/cqrs';
 
 import Metric from '../models/metric.model';
 

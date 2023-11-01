@@ -1,4 +1,4 @@
-import { Event } from '@greenthumb/core';
+import { Event } from '@greenthumb/cqrs';
 
 import type { MetricAttributes, MetricType } from '../models/metric.model';
 

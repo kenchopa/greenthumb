@@ -7,7 +7,14 @@ settings:
 importers:
 
   .:
+    dependencies:
+      uuid:
+        specifier: ^9.0.0
+        version: 9.0.0
     devDependencies:
+      '@types/uuid':
+        specifier: ^9.0.0
+        version: 9.0.0
       '@typescript-eslint/eslint-plugin':
         specifier: ^5.62.0
         version: 5.62.0(@typescript-eslint/parser@5.62.0)(eslint@8.52.0)(typescript@4.9.5)
@@ -132,6 +139,9 @@ importers:
       '@greenthumb/delayer':
         specifier: workspace:*
         version: link:../../packages/delayer
+      '@greenthumb/errors':
+        specifier: workspace:^
+        version: link:../../packages/errors
       '@greenthumb/event-worker':
         specifier: workspace:*
         version: link:../../packages/event-worker
@@ -211,12 +221,9 @@ importers:
 
   apps/telemetry-commands:
     dependencies:
-      '@greenthumb/auth':
+      '@greenthumb/cqrs':
         specifier: workspace:*
-        version: link:../../packages/auth
-      '@greenthumb/core':
-        specifier: workspace:*
-        version: link:../../packages/core
+        version: link:../../packages/cqrs
       '@greenthumb/delayer':
         specifier: workspace:*
         version: link:../../packages/delayer
@@ -265,6 +272,9 @@ importers:
       '@greenthumb/core':
         specifier: workspace:*
         version: link:../../packages/core
+      '@greenthumb/errors':
+        specifier: workspace:^
+        version: link:../../packages/errors
       '@greenthumb/logger':
         specifier: workspace:*
         version: link:../../packages/logger
@@ -326,6 +336,9 @@ importers:
       '@greenthumb/core':
         specifier: workspace:*
         version: link:../core
+      '@greenthumb/errors':
+        specifier: workspace:^
+        version: link:../errors
       joi:
         specifier: ^17.7.0
         version: 17.7.0
@@ -354,6 +367,9 @@ importers:
 
   packages/core:
     dependencies:
+      '@greenthumb/errors':
+        specifier: workspace:^
+        version: link:../errors
       '@greenthumb/logger':
         specifier: workspace:*
         version: link:../logger
@@ -425,7 +441,24 @@ importers:
         specifier: ^9.0.0
         version: 9.0.0
 
+  packages/cqrs:
+    dependencies:
+      '@greenthumb/errors':
+        specifier: workspace:*
+        version: link:../errors
+      class-transformer:
+        specifier: ^0.5.1
+        version: 0.5.1
+      inversify:
+        specifier: ^6.0.2
+        version: 6.0.2
+      mongodb:
+        specifier: ^6.2.0
+        version: 6.2.0
+
   packages/delayer: {}
+
+  packages/errors: {}
 
   packages/event-worker:
     dependencies:

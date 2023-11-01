@@ -31,6 +31,7 @@
     "@greenthumb/auth": "workspace:*",
     "@greenthumb/core": "workspace:*",
     "@greenthumb/delayer": "workspace:*",
+    "@greenthumb/errors": "workspace:^",
     "@greenthumb/event-worker": "workspace:*",
     "@greenthumb/logger": "workspace:*",
     "@greenthumb/tracer": "workspace:*",

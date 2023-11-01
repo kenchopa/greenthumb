@@ -1,4 +1,4 @@
-import { AggregateRoot } from '@greenthumb/core';
+import { AggregateRoot } from '@greenthumb/cqrs';
 
 import MetricCreatedEvent from '../events/metricCreated.event';
 

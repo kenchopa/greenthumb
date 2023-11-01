@@ -1,4 +1,4 @@
-import { CommandBusInterface } from '@greenthumb/core';
+import { CommandBusInterface } from '@greenthumb/cqrs';
 import { Client } from 'cassandra-driver';
 import { AsyncContainerModule, interfaces } from 'inversify';
 import RedisClient, { Redis } from 'ioredis';

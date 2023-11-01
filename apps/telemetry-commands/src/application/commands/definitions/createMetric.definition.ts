@@ -1,4 +1,4 @@
-import { Command } from '@greenthumb/core';
+import { Command } from '@greenthumb/cqrs';
 
 import {
   MetricAttributes,

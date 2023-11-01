@@ -1,6 +1,6 @@
+import { BadRequestError } from '@greenthumb/errors';
 import { Context, Next } from 'koa';
 
-import BadRequestError from '../errors/http/badRequest.error';
 import { setRequestContext } from '../hooks/request-context.hook';
 
 export default function makeRequestContextMiddleware() {

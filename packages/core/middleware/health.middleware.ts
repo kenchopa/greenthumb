@@ -1,8 +1,7 @@
+import { HttpStatusCode } from '@greenthumb/errors';
 import logger from '@greenthumb/logger';
 import { Context } from 'koa';
 import Router from 'koa-router';
-
-import HttpStatusCode from '../errors/httpStatusCode.enum';
 
 const router = new Router();
 

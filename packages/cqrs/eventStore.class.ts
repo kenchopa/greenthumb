@@ -1,7 +1,7 @@
+import { ConcurrencyError, NotFoundError } from '@greenthumb/errors';
 import { injectable, unmanaged } from 'inversify';
 import { Collection } from 'mongodb';
 
-import { ConcurrencyError, NotFoundError } from '../errors';
 import {
   createEventDescriptor,
   rehydrateEventFromDescriptor,

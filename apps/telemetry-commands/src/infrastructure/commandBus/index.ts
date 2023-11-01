@@ -2,7 +2,7 @@ import {
   CommandBusInterface,
   CommandHandlerInterface,
   CommandInterface,
-} from '@greenthumb/core';
+} from '@greenthumb/cqrs';
 import { injectable } from 'inversify';
 
 @injectable()

@@ -1,4 +1,5 @@
-import { actionHandler, HttpStatusCode, Request } from '@greenthumb/core';
+import { actionHandler, Request } from '@greenthumb/core';
+import { HttpStatusCode } from '@greenthumb/errors';
 import Joi from 'joi';
 import { Context } from 'koa';
 import { Span } from 'opentracing';
@@ -24,7 +25,6 @@ const sessionUpdateAction = actionHandler(
       loggedInUser,
       refreshToken,
       refreshTokenExpiredAt,
-      roles,
     } = await authService.refresh(oldRefreshToken, span);
 
     ctx.status = HttpStatusCode.OK;
