@@ -1,5 +1,5 @@
 {
-  "name": "@greenthumb/koa-middleware",
+  "name": "@greenthumb/koa",
   "main": "src/index.ts",
   "dependencies": {
     "@greenthumb/auth": "workspace:^",

@@ -1,5 +1,5 @@
 import { HttpError, HttpStatusCode } from '@greenthumb/errors';
-import { RequestRules } from '@greenthumb/koa-middleware';
+import { RequestRules } from '@greenthumb/koa';
 import {
   type TracerContext,
   createControllerSpan,

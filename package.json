@@ -38,7 +38,7 @@
   "dependencies": {
     "@greenthumb/auth": "workspace:^",
     "@greenthumb/context": "workspace:^",
-    "@greenthumb/koa-middleware": "workspace:^",
+    "@greenthumb/koa": "workspace:^",
     "uuid": "^9.0.0"
   }
 }

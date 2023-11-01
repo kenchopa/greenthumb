@@ -10,7 +10,7 @@ import {
   makeRequestLoggerMiddleware,
   makeSecurityHeadersMiddleware,
   makeValidateMiddleware,
-} from '@greenthumb/koa-middleware';
+} from '@greenthumb/koa';
 import logger from '@greenthumb/logger';
 import Koa from 'koa';
 

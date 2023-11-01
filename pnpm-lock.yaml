@@ -14,9 +14,9 @@ importers:
       '@greenthumb/context':
         specifier: workspace:^
         version: link:packages/context
-      '@greenthumb/koa-middleware':
+      '@greenthumb/koa':
         specifier: workspace:^
-        version: link:packages/koa-middleware
+        version: link:packages/koa
       uuid:
         specifier: ^9.0.0
         version: 9.0.0
@@ -157,9 +157,9 @@ importers:
       '@greenthumb/event-worker':
         specifier: workspace:*
         version: link:../../packages/event-worker
-      '@greenthumb/koa-middleware':
+      '@greenthumb/koa':
         specifier: workspace:^
-        version: link:../../packages/koa-middleware
+        version: link:../../packages/koa
       '@greenthumb/logger':
         specifier: workspace:*
         version: link:../../packages/logger
@@ -293,9 +293,9 @@ importers:
       '@greenthumb/errors':
         specifier: workspace:^
         version: link:../../packages/errors
-      '@greenthumb/koa-middleware':
+      '@greenthumb/koa':
         specifier: workspace:^
-        version: link:../../packages/koa-middleware
+        version: link:../../packages/koa
       '@greenthumb/logger':
         specifier: workspace:*
         version: link:../../packages/logger
@@ -397,9 +397,9 @@ importers:
       '@greenthumb/errors':
         specifier: workspace:^
         version: link:../errors
-      '@greenthumb/koa-middleware':
+      '@greenthumb/koa':
         specifier: workspace:^
-        version: link:../koa-middleware
+        version: link:../koa
       '@greenthumb/logger':
         specifier: workspace:*
         version: link:../logger
@@ -506,7 +506,7 @@ importers:
         specifier: ^9.0.0
         version: 9.0.0
 
-  packages/koa-middleware:
+  packages/koa:
     dependencies:
       '@greenthumb/auth':
         specifier: workspace:^

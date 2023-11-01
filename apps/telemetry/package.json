@@ -33,7 +33,7 @@
     "@greenthumb/delayer": "workspace:*",
     "@greenthumb/errors": "workspace:^",
     "@greenthumb/event-worker": "workspace:*",
-    "@greenthumb/koa-middleware": "workspace:^",
+    "@greenthumb/koa": "workspace:^",
     "@greenthumb/logger": "workspace:*",
     "@greenthumb/tracer": "workspace:*",
     "amqplib": "^0.10.3",

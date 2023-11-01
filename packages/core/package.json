@@ -2,7 +2,7 @@
   "name": "@greenthumb/core",
   "dependencies": {
     "@greenthumb/errors": "workspace:^",
-    "@greenthumb/koa-middleware": "workspace:^",
+    "@greenthumb/koa": "workspace:^",
     "@greenthumb/logger": "workspace:*",
     "@greenthumb/tracer": "workspace:*",
     "class-transformer": "^0.5.1",

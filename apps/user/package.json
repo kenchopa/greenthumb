@@ -37,7 +37,7 @@
     "@greenthumb/context": "workspace:^",
     "@greenthumb/core": "workspace:*",
     "@greenthumb/errors": "workspace:^",
-    "@greenthumb/koa-middleware": "workspace:^",
+    "@greenthumb/koa": "workspace:^",
     "@greenthumb/logger": "workspace:*",
     "@greenthumb/tracer": "workspace:*",
     "axios": "^1.2.5",
