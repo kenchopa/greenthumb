@@ -1,4 +1,4 @@
-import { Role } from '@greenthumb/core';
+import { Role } from '@greenthumb/auth';
 
 export type UserRole = Role.USER | Role.OPERATOR | Role.ADMIN;
 

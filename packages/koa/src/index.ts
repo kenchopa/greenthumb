@@ -1,3 +1,5 @@
+export type { Request } from './controllers';
+export { default as actionHandler } from './controllers';
 export { default as makeAuthenticationMiddleware } from './middleware/authentication.middleware';
 export { default as denyAccessUnlessGranted } from './middleware/authorization.middleware';
 export { default as makeCorrelationMiddleware } from './middleware/correlation.middleware';
@@ -10,3 +12,5 @@ export { default as makeRequestLoggerMiddleware } from './middleware/requestLogg
 export { default as makeSecurityHeadersMiddleware } from './middleware/security.middleware';
 export type { RequestRules } from './middleware/validate.middleware';
 export { default as makeValidateMiddleware } from './middleware/validate.middleware';
+export type { Method, Route } from './router';
+export { default as makeRouter } from './router';

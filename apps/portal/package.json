@@ -9,7 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@greenthumb/core": "workspace:*",
+    "@greenthumb/auth": "workspace:^",
     "@greenthumb/logger": "workspace:*",
     "axios": "^1.2.5",
     "bootstrap": "^4.6.2",

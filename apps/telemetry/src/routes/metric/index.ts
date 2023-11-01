@@ -1,5 +1,5 @@
 import { Role } from '@greenthumb/auth';
-import { Method, Route } from '@greenthumb/core';
+import { Method, Route } from '@greenthumb/koa';
 import { denyAccessUnlessGranted } from '@greenthumb/koa';
 
 import metricGetAllAction from '../../controllers/metric/getAll.controller';

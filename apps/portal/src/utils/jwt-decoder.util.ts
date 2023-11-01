@@ -1,4 +1,4 @@
-import { Token } from '@greenthumb/core';
+import { Token } from '@greenthumb/auth';
 import jwt_decode from 'jwt-decode';
 
 export default function decodeToken(token: any): Token {

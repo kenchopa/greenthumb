@@ -1,4 +1,4 @@
-import { actionHandler } from '@greenthumb/core';
+import { actionHandler } from '@greenthumb/koa';
 import { Context } from 'koa';
 import { Span } from 'opentracing';
 

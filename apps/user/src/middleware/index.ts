@@ -1,4 +1,3 @@
-import { makeRouter } from '@greenthumb/core';
 import {
   makeAuthenticationMiddleware,
   makeBodyParserMiddleware,
@@ -8,6 +7,7 @@ import {
   makeHealthMiddleware,
   makeQueryStringMiddleware,
   makeRequestLoggerMiddleware,
+  makeRouter,
   makeSecurityHeadersMiddleware,
   makeValidateMiddleware,
 } from '@greenthumb/koa';

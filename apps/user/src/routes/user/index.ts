@@ -1,6 +1,5 @@
 import { Role } from '@greenthumb/auth';
-import { Method, Route } from '@greenthumb/core';
-import { denyAccessUnlessGranted } from '@greenthumb/koa';
+import { denyAccessUnlessGranted, Method, Route } from '@greenthumb/koa';
 
 import userCreateAction from '../../controllers/user/create.controller';
 import userDeleteByIdAction from '../../controllers/user/deleteById.controller';

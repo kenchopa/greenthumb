@@ -39,6 +39,7 @@
     "@greenthumb/auth": "workspace:^",
     "@greenthumb/context": "workspace:^",
     "@greenthumb/koa": "workspace:^",
+    "@greenthumb/tracer": "workspace:^",
     "uuid": "^9.0.0"
   }
 }

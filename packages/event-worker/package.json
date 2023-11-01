@@ -1,7 +1,7 @@
 {
   "name": "@greenthumb/event-worker",
   "dependencies": {
-    "@greenthumb/core": "workspace:*",
+    "@greenthumb/auth": "workspace:^",
     "typeorm": "^0.3.11",
     "uuid": "^9.0.0"
   },

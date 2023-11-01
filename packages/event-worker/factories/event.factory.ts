@@ -1,4 +1,4 @@
-import { Role } from '@greenthumb/core';
+import { Role } from '@greenthumb/auth';
 import { v4 as uuidV4 } from 'uuid';
 
 import { Event } from '../models';

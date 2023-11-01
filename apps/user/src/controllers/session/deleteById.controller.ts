@@ -1,6 +1,6 @@
 import { Token } from '@greenthumb/auth';
-import { actionHandler } from '@greenthumb/core';
 import { HttpStatusCode } from '@greenthumb/errors';
+import { actionHandler } from '@greenthumb/koa';
 import { Context } from 'koa';
 import { Span } from 'opentracing';
 

@@ -1,4 +1,4 @@
-import { Route } from '@greenthumb/core';
+import { Route } from '@greenthumb/koa';
 
 import metricRoutes from './metric';
 

@@ -14,7 +14,7 @@ export type Route = {
   path: string;
 };
 
-export function makeRouter(routes: Array<Route>) {
+export default function makeRouter(routes: Array<Route>) {
   const router = new Router();
 
   routes.forEach(({ action, method, path, security }) => {

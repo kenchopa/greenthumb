@@ -1,4 +1,4 @@
-import { Route } from '@greenthumb/core';
+import { Route } from '@greenthumb/koa';
 
 import sessionRoutes from './session';
 import userRoutes from './user';
