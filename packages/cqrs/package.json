@@ -1,9 +1,13 @@
 {
   "name": "@greenthumb/cqrs",
+  "main": "src/index.ts",
   "dependencies": {
     "@greenthumb/errors": "workspace:*",
     "class-transformer": "^0.5.1",
     "inversify": "^6.0.2",
     "mongodb": "^6.2.0"
+  },
+  "devDependencies": {
+    "@types/uuid": "^9.0.0"
   }
 }

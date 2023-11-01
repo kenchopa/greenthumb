@@ -6,6 +6,6 @@
     "module": "commonjs",
     "outDir": "dist",
   },
-  "include": ["src/config/index.ts", "src/**/*.ts", "src/**/*.d.ts"],
+  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/index.ts"],
   "exclude": ["node_modules/**/*"],
 }

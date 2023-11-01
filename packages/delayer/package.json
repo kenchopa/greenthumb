@@ -1,3 +1,4 @@
 {
-  "name": "@greenthumb/delayer"
+  "name": "@greenthumb/delayer",
+  "main": "src/index.ts"
 }

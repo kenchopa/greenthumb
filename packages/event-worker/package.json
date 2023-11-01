@@ -1,5 +1,6 @@
 {
   "name": "@greenthumb/event-worker",
+  "main": "src/index.ts",
   "dependencies": {
     "@greenthumb/auth": "workspace:^",
     "typeorm": "^0.3.11",

@@ -1,5 +1,6 @@
 {
   "name": "@greenthumb/tracer",
+  "main": "src/index.ts",
   "dependencies": {
     "@greenthumb/logger": "workspace:*",
     "jaeger-client": "^3.19.0",

@@ -1,5 +1,6 @@
 {
   "name": "@greenthumb/logger",
+  "main": "src/index.ts",
   "dependencies": {
     "winston": "^3.8.2"
   }

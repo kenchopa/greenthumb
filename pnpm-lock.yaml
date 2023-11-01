@@ -386,85 +386,6 @@ importers:
         specifier: workspace:^
         version: link:../auth
 
-  packages/core:
-    dependencies:
-      '@greenthumb/errors':
-        specifier: workspace:^
-        version: link:../errors
-      '@greenthumb/koa':
-        specifier: workspace:^
-        version: link:../koa
-      '@greenthumb/logger':
-        specifier: workspace:*
-        version: link:../logger
-      '@greenthumb/tracer':
-        specifier: workspace:*
-        version: link:../tracer
-      class-transformer:
-        specifier: ^0.5.1
-        version: 0.5.1
-      inversify:
-        specifier: ^6.0.2
-        version: 6.0.2
-      joi:
-        specifier: ^17.7.0
-        version: 17.7.0
-      koa:
-        specifier: ^2.14.1
-        version: 2.14.1
-      koa-bodyparser:
-        specifier: ^4.3.0
-        version: 4.3.0
-      koa-convert:
-        specifier: ^2.0.0
-        version: 2.0.0
-      koa-cors:
-        specifier: ^0.0.16
-        version: 0.0.16
-      koa-helmet:
-        specifier: ^6.1.0
-        version: 6.1.0
-      koa-qs:
-        specifier: ^3.0.0
-        version: 3.0.0
-      koa-router:
-        specifier: ^12.0.0
-        version: 12.0.0
-      mongodb:
-        specifier: ^6.2.0
-        version: 6.2.0
-      opentracing:
-        specifier: ^0.14.7
-        version: 0.14.7
-      uuid:
-        specifier: ^9.0.0
-        version: 9.0.0
-    devDependencies:
-      '@types/koa':
-        specifier: ^2.13.5
-        version: 2.13.5
-      '@types/koa-bodyparser':
-        specifier: ^4.3.10
-        version: 4.3.10
-      '@types/koa-convert':
-        specifier: ^1.2.4
-        version: 1.2.4
-      '@types/koa-cors':
-        specifier: ^0.0.2
-        version: 0.0.2
-      '@types/koa-helmet':
-        specifier: ^6.0.4
-        version: 6.0.4
-      '@types/koa-qs':
-        specifier: ^2.0.0
-        version: 2.0.0
-      '@types/koa-router':
-        specifier: ^7.4.4
-        version: 7.4.4
-      '@types/uuid':
-        specifier: ^9.0.0
-        version: 9.0.0
-
   packages/cqrs:
     dependencies:
       '@greenthumb/errors':
@@ -479,6 +400,10 @@ importers:
       mongodb:
         specifier: ^6.2.0
         version: 6.2.0
+    devDependencies:
+      '@types/uuid':
+        specifier: ^9.0.0
+        version: 9.0.0
 
   packages/delayer: {}
 
