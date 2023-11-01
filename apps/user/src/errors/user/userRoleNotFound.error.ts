@@ -1,3 +1,4 @@
+import { Role } from '@greenthumb/auth';
 import { HttpError, HttpStatusCode } from '@greenthumb/errors';
 
 export default class UserRoleNotFound extends HttpError {
@@ -6,7 +7,7 @@ export default class UserRoleNotFound extends HttpError {
     Object.setPrototypeOf(this, UserRoleNotFound.prototype);
   }
 
-  static forUnknownRole(role: string) {
+  static forUnknownRole(role: Role) {
     return new this(`Unknown role "${role}" not found.`);
   }
 }

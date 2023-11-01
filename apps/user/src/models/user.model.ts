@@ -1,4 +1,4 @@
-import { Role } from '@greenthumb/core';
+import { Role } from '@greenthumb/auth';
 import bcrypt from 'bcrypt';
 import {
   BeforeInsert,

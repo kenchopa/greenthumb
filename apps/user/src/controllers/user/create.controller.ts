@@ -1,5 +1,6 @@
+import { Role } from '@greenthumb/auth';
 import { getRequestContext } from '@greenthumb/context';
-import { actionHandler, Request, Role } from '@greenthumb/core';
+import { actionHandler, Request } from '@greenthumb/core';
 import { HttpStatusCode } from '@greenthumb/errors';
 import Joi from 'joi';
 import { Context } from 'koa';

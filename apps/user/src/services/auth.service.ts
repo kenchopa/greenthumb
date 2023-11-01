@@ -1,6 +1,9 @@
 /* eslint-disable class-methods-use-this */
-import { generateAccessToken, generateRefreshToken } from '@greenthumb/auth';
-import { Role } from '@greenthumb/core';
+import {
+  generateAccessToken,
+  generateRefreshToken,
+  Role,
+} from '@greenthumb/auth';
 import { createServiceSpan } from '@greenthumb/tracer';
 import moment from 'moment';
 import { Span } from 'opentracing';

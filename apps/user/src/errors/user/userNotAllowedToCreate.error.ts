@@ -1,3 +1,4 @@
+import { Role } from '@greenthumb/auth';
 import { HttpError, HttpStatusCode } from '@greenthumb/errors';
 
 export default class UserNotAllowedToCreateError extends HttpError {
@@ -10,7 +11,7 @@ export default class UserNotAllowedToCreateError extends HttpError {
     Object.setPrototypeOf(this, UserNotAllowedToCreateError.prototype);
   }
 
-  static forRole(role: string) {
+  static forRole(role: Role) {
     return new this(`Not allowed to create an user with role "${role}".`);
   }
 }

@@ -50,8 +50,6 @@ export default function makeErrorResponderMiddleware() {
       }
       problem.instance = originalUrl;
 
-      // stringify the data to enable Content-Type application/problem+json
-      // otherwise it will be overriden by application/json
       const data = {
         ...problem.human(),
         stack: !expose ? undefined : error.stack,
@@ -59,6 +57,8 @@ export default function makeErrorResponderMiddleware() {
 
       ctx.type = 'application/problem+json';
       ctx.status = problem.status;
+      // stringify the data to enable Content-Type application/problem+json
+      // otherwise it will be overriden by application/jso
       ctx.body = JSON.stringify(data);
 
       logger.error(`${problem.title} occurred.`, {

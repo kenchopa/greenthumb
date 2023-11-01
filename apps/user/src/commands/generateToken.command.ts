@@ -1,8 +1,7 @@
 /* eslint-disable import/prefer-default-export */
 import 'dotenv/config';
 
-import { generateAccessToken } from '@greenthumb/auth';
-import { Role } from '@greenthumb/core';
+import { generateAccessToken, Role } from '@greenthumb/auth';
 import moment from 'moment';
 
 const forRole = process.argv[2];
