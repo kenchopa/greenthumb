@@ -12,5 +12,5 @@ export { default as makeRequestLoggerMiddleware } from './middleware/requestLogg
 export { default as makeSecurityHeadersMiddleware } from './middleware/security.middleware';
 export type { RequestRules } from './middleware/validate.middleware';
 export { default as makeValidateMiddleware } from './middleware/validate.middleware';
-export type { Method, Route } from './router';
+export * from './router';
 export { default as makeRouter } from './router';
