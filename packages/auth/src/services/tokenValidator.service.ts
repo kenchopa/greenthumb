@@ -1,6 +1,7 @@
-import { Role, Token } from '@greenthumb/core';
 import Joi from 'joi';
 import jwt from 'jsonwebtoken';
+
+import { Role, Token } from '../models';
 
 /**
  * iss (issuer): Issuer of the JWT

@@ -1,6 +1,7 @@
-import { Role, Token } from '@greenthumb/core';
 import fs from 'fs';
 import jwt from 'jsonwebtoken';
+
+import { Role, Token } from '../models';
 
 type JwtPublicKeyFileEnv =
   | 'JWT_SYSTEM_PUBLIC_KEY_FILE'

@@ -1,5 +1,6 @@
-import { makeAuthenticationMiddleware } from '@greenthumb/auth';
+import { makeRouter } from '@greenthumb/core';
 import {
+  makeAuthenticationMiddleware,
   makeBodyParserMiddleware,
   makeCorrelationMiddleware,
   makeCorsMiddleware,
@@ -7,10 +8,9 @@ import {
   makeHealthMiddleware,
   makeQueryStringMiddleware,
   makeRequestLoggerMiddleware,
-  makeRouter,
   makeSecurityHeadersMiddleware,
   makeValidateMiddleware,
-} from '@greenthumb/core';
+} from '@greenthumb/koa-middleware';
 import logger from '@greenthumb/logger';
 import Koa from 'koa';
 

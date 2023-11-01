@@ -17,6 +17,7 @@
   "author": "Kengy Van Hijfte",
   "license": "ISC",
   "devDependencies": {
+    "@types/node": "^20.8.10",
     "@types/uuid": "^9.0.0",
     "@typescript-eslint/eslint-plugin": "^5.62.0",
     "@typescript-eslint/parser": "^5.62.0",
@@ -35,6 +36,9 @@
     "typescript": "^4.9.5"
   },
   "dependencies": {
+    "@greenthumb/auth": "workspace:^",
+    "@greenthumb/context": "workspace:^",
+    "@greenthumb/koa-middleware": "workspace:^",
     "uuid": "^9.0.0"
   }
 }

@@ -1,9 +1,9 @@
-import { Role } from '@greenthumb/core';
 import fs from 'fs';
 import jwt, { JwtPayload } from 'jsonwebtoken';
 import moment, { Moment } from 'moment';
 import { v4 as uuidv4 } from 'uuid';
 
+import { Role } from '../models';
 import validateToken from './tokenValidator.service';
 
 type JwtPrivateKeyFileEnv =

@@ -1,5 +1,5 @@
-import { denyAccessUnlessGranted } from '@greenthumb/auth';
 import { Method, Role, Route } from '@greenthumb/core';
+import { denyAccessUnlessGranted } from '@greenthumb/koa-middleware';
 
 import sessionCreateAction from '../../controllers/session/create.controller';
 import sessionDeleteByIdAction from '../../controllers/session/deleteById.controller';

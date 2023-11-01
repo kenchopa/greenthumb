@@ -34,8 +34,10 @@
   },
   "dependencies": {
     "@greenthumb/auth": "workspace:*",
+    "@greenthumb/context": "workspace:^",
     "@greenthumb/core": "workspace:*",
     "@greenthumb/errors": "workspace:^",
+    "@greenthumb/koa-middleware": "workspace:^",
     "@greenthumb/logger": "workspace:*",
     "@greenthumb/tracer": "workspace:*",
     "axios": "^1.2.5",

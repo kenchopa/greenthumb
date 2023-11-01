@@ -1,5 +1,5 @@
-import { denyAccessUnlessGranted } from '@greenthumb/auth';
 import { Method, Role, Route } from '@greenthumb/core';
+import { denyAccessUnlessGranted } from '@greenthumb/koa-middleware';
 
 import metricGetAllAction from '../../controllers/metric/getAll.controller';
 import metricGetByIdAction from '../../controllers/metric/getById.controller';

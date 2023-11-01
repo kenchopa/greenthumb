@@ -1,3 +1,4 @@
 {
-  "name": "@greenthumb/errors"
+  "name": "@greenthumb/errors",
+  "main": "src/index.ts"
 }

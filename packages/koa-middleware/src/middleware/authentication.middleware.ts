@@ -1,9 +1,6 @@
-import { Token } from '@greenthumb/core';
+import { Token, validateToken, verifyToken } from '@greenthumb/auth';
 import { UnauthorizedError } from '@greenthumb/errors';
 import { Context, Next } from 'koa';
-
-import validateToken from '../services/tokenValidator.service';
-import verifyToken from '../services/tokenVerifier.service';
 
 export default function makeAuthenticationMiddleware() {
   return async (ctx: Context, next: Next) => {

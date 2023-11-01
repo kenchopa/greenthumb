@@ -1,7 +1,6 @@
+import { setRequestContext } from '@greenthumb/context';
 import { BadRequestError } from '@greenthumb/errors';
 import { Context, Next } from 'koa';
-
-import { setRequestContext } from '../hooks/request-context.hook';
 
 export default function makeRequestContextMiddleware() {
   return async (ctx: Context, next: Next) => {

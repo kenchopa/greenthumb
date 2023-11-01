@@ -1,7 +1,5 @@
+import { Role, Token } from '@greenthumb/auth';
 import asyncHooks from 'async_hooks';
-
-import Role from '../models/role.enum';
-import Token from '../models/token.type';
 
 export type RequestContext = {
   actorType: Role;

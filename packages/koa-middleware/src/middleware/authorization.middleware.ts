@@ -1,4 +1,4 @@
-import { Role, Token } from '@greenthumb/core';
+import { Role, Token } from '@greenthumb/auth';
 import { ForbiddenError } from '@greenthumb/errors';
 import { Context } from 'joi';
 import { Next } from 'koa';

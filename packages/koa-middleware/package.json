@@ -1,12 +1,11 @@
 {
-  "name": "@greenthumb/core",
+  "name": "@greenthumb/koa-middleware",
+  "main": "src/index.ts",
   "dependencies": {
+    "@greenthumb/auth": "workspace:^",
+    "@greenthumb/context": "workspace:^",
     "@greenthumb/errors": "workspace:^",
-    "@greenthumb/koa-middleware": "workspace:^",
-    "@greenthumb/logger": "workspace:*",
-    "@greenthumb/tracer": "workspace:*",
-    "class-transformer": "^0.5.1",
-    "inversify": "^6.0.2",
+    "@greenthumb/logger": "workspace:^",
     "joi": "^17.7.0",
     "koa": "^2.14.1",
     "koa-bodyparser": "^4.3.0",
@@ -15,9 +14,7 @@
     "koa-helmet": "^6.1.0",
     "koa-qs": "^3.0.0",
     "koa-router": "^12.0.0",
-    "mongodb": "^6.2.0",
-    "opentracing": "^0.14.7",
-    "uuid": "^9.0.0"
+    "perf_hooks": "^0.0.1"
   },
   "devDependencies": {
     "@types/koa": "^2.13.5",
@@ -26,7 +23,6 @@
     "@types/koa-cors": "^0.0.2",
     "@types/koa-helmet": "^6.0.4",
     "@types/koa-qs": "^2.0.0",
-    "@types/koa-router": "^7.4.4",
-    "@types/uuid": "^9.0.0"
+    "@types/koa-router": "^7.4.4"
   }
 }

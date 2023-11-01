@@ -1,4 +1,5 @@
 import { HttpError, HttpStatusCode } from '@greenthumb/errors';
+import { RequestRules } from '@greenthumb/koa-middleware';
 import {
   type TracerContext,
   createControllerSpan,
@@ -6,8 +7,6 @@ import {
 } from '@greenthumb/tracer';
 import { Context, DefaultState } from 'koa';
 import { Span } from 'opentracing';
-
-import { RequestRules } from '../middleware/validate.middleware';
 
 export declare type Request = {
   query?: any;

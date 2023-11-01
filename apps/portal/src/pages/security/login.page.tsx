@@ -92,9 +92,7 @@ const Login: React.FC<Props> = () => {
               </button>
             </div>
 
-            <div className="form-group">
-                
-            </div>
+            <div className="form-group"></div>
 
             {message && (
               <div className="form-group">

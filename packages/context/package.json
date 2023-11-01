@@ -1,0 +1,7 @@
+{
+  "name": "@greenthumb/context",
+  "main": "src/index.ts",
+  "dependencies": {
+    "@greenthumb/auth": "workspace:^"
+  }
+}
