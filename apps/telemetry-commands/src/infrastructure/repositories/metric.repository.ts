@@ -1,8 +1,7 @@
 import { EventSourcedRepository, EventStoreInterface } from '@greenthumb/cqrs';
+import { Metric, MetricRepositoryInterface } from '@greenthumb/domain';
 import { inject, injectable } from 'inversify';
 
-import Metric from '../../domain/models/metric.model';
-import { MetricRepositoryInterface } from '../../domain/repositories/metricRepository.interface';
 import TYPES from '../../types';
 
 @injectable()

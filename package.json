@@ -38,6 +38,8 @@
   "dependencies": {
     "@greenthumb/auth": "workspace:^",
     "@greenthumb/context": "workspace:^",
+    "@greenthumb/cqrs": "workspace:^",
+    "@greenthumb/domain": "workspace:^",
     "@greenthumb/koa": "workspace:^",
     "@greenthumb/tracer": "workspace:^",
     "uuid": "^9.0.0"

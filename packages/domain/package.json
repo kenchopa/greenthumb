@@ -1,0 +1,7 @@
+{
+  "name": "@greenthumb/domain",
+  "main": "src/index.ts",
+  "dependencies": {
+    "@greenthumb/cqrs": "workspace:^"
+  }
+}

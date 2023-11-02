@@ -1,9 +1,9 @@
 import { EventHandlerInterface } from '@greenthumb/cqrs';
+import { MetricCreatedEvent } from '@greenthumb/domain';
 import { LoggerInterface } from '@greenthumb/logger';
 import { Client } from 'cassandra-driver';
 import { inject, injectable } from 'inversify';
 
-import MetricCreatedEvent from '../../../domain/events/metricCreated.event';
 import TYPES from '../../../types';
 
 @injectable()

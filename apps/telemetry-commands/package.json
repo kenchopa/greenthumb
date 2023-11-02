@@ -16,6 +16,7 @@
   "dependencies": {
     "@greenthumb/cqrs": "workspace:*",
     "@greenthumb/delayer": "workspace:*",
+    "@greenthumb/domain": "workspace:*",
     "@greenthumb/logger": "workspace:*",
     "cassandra-driver": "^4.7.2",
     "class-transformer": "^0.5.1",

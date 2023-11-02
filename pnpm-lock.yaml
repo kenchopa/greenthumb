@@ -14,6 +14,12 @@ importers:
       '@greenthumb/context':
         specifier: workspace:^
         version: link:packages/context
+      '@greenthumb/cqrs':
+        specifier: workspace:^
+        version: link:packages/cqrs
+      '@greenthumb/domain':
+        specifier: workspace:^
+        version: link:packages/domain
       '@greenthumb/koa':
         specifier: workspace:^
         version: link:packages/koa
@@ -242,6 +248,9 @@ importers:
       '@greenthumb/delayer':
         specifier: workspace:*
         version: link:../../packages/delayer
+      '@greenthumb/domain':
+        specifier: workspace:^
+        version: link:../../packages/domain
       '@greenthumb/logger':
         specifier: workspace:*
         version: link:../../packages/logger
@@ -406,6 +415,12 @@ importers:
         version: 9.0.0
 
   packages/delayer: {}
+
+  packages/domain:
+    dependencies:
+      '@greenthumb/cqrs':
+        specifier: workspace:^
+        version: link:../cqrs
 
   packages/errors: {}
 

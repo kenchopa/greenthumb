@@ -1,9 +1,5 @@
 import { Command } from '@greenthumb/cqrs';
-
-import {
-  MetricAttributes,
-  MetricType,
-} from '../../../domain/models/metric.model';
+import { MetricAttributes, MetricType } from '@greenthumb/domain';
 
 export default class CreateMetricCommand extends Command {
   private type!: MetricType;

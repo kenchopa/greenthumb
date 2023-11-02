@@ -12,7 +12,7 @@ export enum MetricType {
   LIGHT = 'light',
 }
 
-type MoistureAttributes = {
+export type MoistureAttributes = {
   value: number;
   percentage: number;
   voltage: number;
@@ -20,33 +20,33 @@ type MoistureAttributes = {
   unit: string;
 };
 
-type GroundTemperatureAttributes = {
+export type GroundTemperatureAttributes = {
   value: number;
   unit: string;
 };
 
-type WaterTemperatureAttributes = {
+export type WaterTemperatureAttributes = {
   value: number;
   unit: string;
 };
 
-type AirTemperatureAttributes = {
+export type AirTemperatureAttributes = {
   value: number;
   unit: string;
 };
 
-type PhAttributes = {
+export type PhAttributes = {
   value: number;
   unit: string;
 };
 
-type HumidityAttributes = {
+export type HumidityAttributes = {
   value: number;
   unit: string;
 };
 
-type LightState = 'DARK' | 'DIM' | 'LIGHT' | 'BRIGHT' | 'BLIND';
-type LightAttributes = {
+export type LightState = 'DARK' | 'DIM' | 'LIGHT' | 'BRIGHT' | 'BLIND';
+export type LightAttributes = {
   value: number;
   state: LightState;
 };
@@ -60,7 +60,7 @@ export type MetricAttributes =
   | HumidityAttributes
   | LightAttributes;
 
-export default class Metric extends AggregateRoot {
+export class Metric extends AggregateRoot {
   private type?: MetricType;
 
   private attributes?: MetricAttributes;

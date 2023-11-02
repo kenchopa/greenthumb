@@ -4,8 +4,8 @@ import { Db } from 'mongodb';
 
 import TYPES from '../../types';
 
+// TODO: implement this MetricEventStore
 @injectable()
-// todo: implement MetricEventStoreInterface
 export default class MetricEventStore extends EventStore {
   constructor(
     @inject(TYPES.Db) private readonly db: Db,

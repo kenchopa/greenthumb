@@ -4,12 +4,12 @@ import {
   CommandInterface,
   EventHandlerInterface,
 } from '@greenthumb/cqrs';
+import { MetricCreatedEvent } from '@greenthumb/domain';
 import logger, { LoggerInterface } from '@greenthumb/logger';
 import { Container } from 'inversify';
 
 import CreateMetricCommandHandler from './application/commands/handlers/createMetric.handler';
 import MetricCreatedEventHandler from './application/events/handlers/metricCreatedHandler';
-import MetricCreatedEvent from './domain/events/metricCreated.event';
 import infrastructureModule from './infrastructure/infrastructure.module';
 import TYPES from './types';
 
