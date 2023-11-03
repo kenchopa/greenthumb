@@ -1,5 +1,9 @@
-import { EventSourcedRepository, EventStoreInterface } from '@greenthumb/cqrs';
-import { Metric, MetricRepositoryInterface } from '@greenthumb/domain';
+import { EventSourcedRepository } from '@greenthumb/cqrs';
+import {
+  Metric,
+  MetricEventStoreInterface,
+  MetricRepositoryInterface,
+} from '@greenthumb/domain';
 import { inject, injectable } from 'inversify';
 
 import TYPES from '../../types';
@@ -11,7 +15,7 @@ export default class MetricRepository
 {
   constructor(
     @inject(TYPES.MetricEventStore)
-    private readonly eventstore: EventStoreInterface,
+    private readonly eventstore: MetricEventStoreInterface,
   ) {
     super(eventstore, Metric);
   }

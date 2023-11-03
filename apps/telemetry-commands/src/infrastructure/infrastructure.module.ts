@@ -38,8 +38,7 @@ const infrastructureModule = new AsyncContainerModule(
     bind<Producer>(TYPES.KafkaProducer).toConstantValue(kafkaProducer);
     bind<Consumer>(TYPES.KafkaConsumer).toConstantValue(kafkaConsumer);
     bind<Redis>(TYPES.Redis).toConstantValue(new RedisClient(config.REDIS.URI));
-    // TODO: implement MetricEventStoreInterface
-    bind<MetricEventStore>(TYPES.MetricEventStore)
+    bind<MetricEventStoreInterface>(TYPES.MetricEventStore)
       .to(MetricEventStore)
       .inSingletonScope();
     bind<MetricRepositoryInterface>(TYPES.MetricRepository)
