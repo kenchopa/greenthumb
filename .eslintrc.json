@@ -19,7 +19,7 @@
     "ecmaVersion": "latest",
     "sourceType": "module"
   },
-  "plugins": ["@typescript-eslint", "simple-import-sort", "sort-keys-fix"],
+  "plugins": ["@typescript-eslint", "simple-import-sort", "sort-keys-fix", "unused-imports"],
   "rules": {
     "import/no-extraneous-dependencies": ["error", {"devDependencies": true}],
     "simple-import-sort/imports": "error",
@@ -60,11 +60,6 @@
       }
     ],
     "linebreak-style": ["error", "unix"],
-    "no-console": ["warn"],
-    "no-param-reassign": "warn",
-    "no-underscore-dangle": 0,
-    "no-unused-expressions": "error",
-    "no-useless-catch": "off",
     "quotes": [
       "error",
       "single",
@@ -81,6 +76,11 @@
         "natural": true
       }
     ],
+    "no-console": ["warn"],
+    "no-param-reassign": "warn",
+    "no-underscore-dangle": 0,
+    "no-unused-expressions": "error",
+    "no-useless-catch": "off",
     "no-restricted-syntax": [
       "error",
       "ForInStatement",
@@ -92,7 +92,17 @@
     "no-shadow": "off",
     "no-unused-vars": "off",
     "no-use-before-define": "off",
-    "no-useless-constructor": "off"
+    "no-useless-constructor": "off",
+    "unused-imports/no-unused-imports": "error",
+    "unused-imports/no-unused-vars": [
+      "warn",
+      {
+        "vars": "all",
+        "varsIgnorePattern": "^_",
+        "args": "after-used",
+        "argsIgnorePattern": "^_"
+      }
+    ]
   },
   "settings": {
     "import/parsers": {
