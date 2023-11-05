@@ -6,7 +6,6 @@ import config from '../../config';
 export default async function createMongodbConnection(
   uri: string,
 ): Promise<Db> {
-  logger.debug(`Connecting to MongoDB server: ${uri}...`);
   const client = new MongoClient(uri);
 
   // Connect to the MongoDB server
@@ -14,6 +13,7 @@ export default async function createMongodbConnection(
 
   // Connect to the desired database (replace 'mydb' with your database name)
   const db = client.db(config.MONGODB.DB_NAME);
+  logger.debug(`Connection to MongoDB server established on "${uri}".`);
 
   return db;
 }

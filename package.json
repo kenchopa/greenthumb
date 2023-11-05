@@ -10,6 +10,7 @@
     "portal": "pnpm --filter @greenthumb/portal",
     "user": "pnpm --filter @greenthumb/user",
     "telemetry": "pnpm --filter @greenthumb/telemetry",
+    "telemetry-commands": "pnpm --filter @greenthumb/telemetry-commands",
     "dev": "pnpm --recursive --parallel --stream run dev",
     "build": "pnpm --recursive --parallel --stream run build"
   },
@@ -18,7 +19,6 @@
   "license": "ISC",
   "devDependencies": {
     "@types/node": "^20.8.10",
-    "@types/uuid": "^9.0.0",
     "@typescript-eslint/eslint-plugin": "^5.62.0",
     "@typescript-eslint/parser": "^5.62.0",
     "eslint": "^8.52.0",
@@ -35,14 +35,5 @@
     "rimraf": "^4.1.2",
     "ts-node": "^10.9.1",
     "typescript": "^4.9.5"
-  },
-  "dependencies": {
-    "@greenthumb/auth": "workspace:^",
-    "@greenthumb/context": "workspace:^",
-    "@greenthumb/cqrs": "workspace:^",
-    "@greenthumb/domain": "workspace:^",
-    "@greenthumb/koa": "workspace:^",
-    "@greenthumb/tracer": "workspace:^",
-    "uuid": "^9.0.0"
   }
 }

@@ -156,8 +156,6 @@ if (error) {
   process.exit(1);
 }
 
-console.log('mongodb', MONGODB_URI);
-
 const config: Config = {
   APP: {
     DOCS_URI,

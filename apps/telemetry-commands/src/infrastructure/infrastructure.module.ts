@@ -1,4 +1,4 @@
-import { CommandBusInterface } from '@greenthumb/cqrs';
+import { CommandBusInterface, EventBusInterface } from '@greenthumb/cqrs';
 import {
   MetricEventStoreInterface,
   MetricRepositoryInterface,
@@ -6,7 +6,7 @@ import {
 import { Client } from 'cassandra-driver';
 import { AsyncContainerModule, interfaces } from 'inversify';
 import RedisClient, { Redis } from 'ioredis';
-import { Consumer, Kafka, Producer } from 'kafkajs';
+import { Consumer, Kafka, Partitioners, Producer } from 'kafkajs';
 import { Db } from 'mongodb';
 
 import config from '../config';
@@ -14,6 +14,7 @@ import TYPES from '../types';
 import CommandBus from './commandBus';
 import createCassandraClient from './db/cassandra';
 import createMongodbConnection from './db/mongodb';
+import KafkaEventBus from './eventbus/kafka.eventBus';
 import MetricEventStore from './eventStore/metric.eventstore';
 import MetricRepository from './repositories/metric.repository';
 
@@ -27,7 +28,9 @@ const infrastructureModule = new AsyncContainerModule(
     );
 
     const kafka = new Kafka({ brokers: config.KAFKA.BROKER_LIST.split(',') });
-    const kafkaProducer = kafka.producer();
+    const kafkaProducer = kafka.producer({
+      createPartitioner: Partitioners.DefaultPartitioner,
+    });
     const kafkaConsumer = kafka.consumer({
       groupId: config.KAFKA.CONSUMER_GROUP_ID,
     });
@@ -38,6 +41,7 @@ const infrastructureModule = new AsyncContainerModule(
     bind<Producer>(TYPES.KafkaProducer).toConstantValue(kafkaProducer);
     bind<Consumer>(TYPES.KafkaConsumer).toConstantValue(kafkaConsumer);
     bind<Redis>(TYPES.Redis).toConstantValue(new RedisClient(config.REDIS.URI));
+    bind<EventBusInterface>(TYPES.EventBus).to(KafkaEventBus);
     bind<MetricEventStoreInterface>(TYPES.MetricEventStore)
       .to(MetricEventStore)
       .inSingletonScope();
