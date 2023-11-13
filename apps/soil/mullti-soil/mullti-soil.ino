@@ -5,8 +5,8 @@
 // USED D1 WiFi R1 BOARD
 
 // WIFI PARAMETERS
-const char* SSID = "websouffle";
-const char* PASSWORD = "SharingIsCaring";
+const char* SSID = "WIFI_SSID";
+const char* PASSWORD = "WIFI_PASSWORD";
 
 // Set your Static IP Address Settings
 IPAddress local_IP(192, 168, 0, 174);
@@ -15,16 +15,12 @@ IPAddress subnet(255, 255, 255, 0);
 IPAddress primaryDNS(8, 8, 8, 8); // this is optional
 IPAddress secondaryDNS(8, 8, 4, 4); // this is optional
 
-
-const int SENSOR_COUNT = 2;
-const int SENSOR_PINS[SENSOR_COUNT] = {5, 4};
+const int SENSOR_COUNT = 3;
+// GPIO PINS ARE USED
+const int SENSOR_PINS[SENSOR_COUNT] = {16, 5, 4};
 
 // INPUT PINS
 const int MULTIPLEX_ANALOG_PIN_0 = A0;
-
-// Check GPIO pins on board - image
-const int PIN_SENSOR_ONE_D3 = 5;
-const int PIN_SENSOR_TWO_D4 = 4;
 
 // CONSTANTS
 const int DRY_GROUND = 600;
@@ -40,10 +36,6 @@ const int DELAY_LOOP_MS = 3000; // 3 sec
 // SERVER CONFIG
 const int PORT = 81;
 WebSocketsServer webSocket = WebSocketsServer(PORT);
-
-// VALUES
-float previousReadSoilPlant1 = 0;
-float previousReadSoilPlant2 = 0;
 
 void getNetworkInfo(){
   if(WiFi.status() != WL_CONNECTED) {
@@ -67,9 +59,15 @@ void getNetworkInfo(){
 void setup() {
   Serial.begin(115200);
   analogReference(EXTERNAL); // set the analog reference to 3.3V
-  pinMode(PIN_SENSOR_ONE_D3,OUTPUT);
-  pinMode(PIN_SENSOR_TWO_D4,OUTPUT);
+
+  // Setup input pins
   pinMode(MULTIPLEX_ANALOG_PIN_0,INPUT);
+
+  // Setup output pins
+  for (int i = 0; i < SENSOR_COUNT; i++) {
+      pinMode(SENSOR_PINS[i],OUTPUT);
+  }
+
   Serial.println("Booting up... give me a second, initializing");
   delay(DELAY_CONNECTING_SERIAL_MS);
 
@@ -109,92 +107,51 @@ void setup() {
   webSocket.onEvent(webSocketEvent);
 }
 
-int analogReadPlantOne() {
-    digitalWrite(PIN_SENSOR_ONE_D3, HIGH); // Turn D3 On
-    digitalWrite(PIN_SENSOR_TWO_D4, LOW); // Turn D4 Off
-    delay(100);
-    int readSensorOne = analogRead(MULTIPLEX_ANALOG_PIN_0);
-    delay(100);
-    return readSensorOne;
+// Function to Read from a Specific Sensor
+int readSensor(int sensorNumber) {
+    // Set all sensor pins LOW except the selected one
+    for (int i = 0; i < SENSOR_COUNT; i++) {
+        digitalWrite(SENSOR_PINS[i], i == sensorNumber ? HIGH : LOW);
+    }
+    delay(100); // Allow time for the multiplexer to switch
+    int sensorValue = analogRead(MULTIPLEX_ANALOG_PIN_0);
+    delay(100); // Stabilization delay
+    return sensorValue;
 }
 
-int analogReadPlantTwo() {
-    digitalWrite(PIN_SENSOR_ONE_D3, LOW); //  Turn D3 OFF
-    digitalWrite(PIN_SENSOR_TWO_D4, HIGH); // Turn D4 ON
-    delay(100);
-    int readSensorTwo = analogRead(MULTIPLEX_ANALOG_PIN_0);
-    delay(100);
-    return readSensorTwo;
+DynamicJsonDocument createSensorJson(int sensorValue, int sensorNumber) {
+    DynamicJsonDocument doc(128);
+    int percentage = map(sensorValue, DRY_GROUND, WET_GROUND, 0, 100);
+    percentage = constrain(percentage, 0, 100);
+    float voltage = (float(percentage) / 1023.0) * 3.3;
+    float volumeWaterContent = ((1.0 / voltage) * SLOPE) + INTERCEPT;
+    int plant = sensorNumber + 1;
+
+    doc["sensor"][sensorNumber]["plant"] = plant;
+    doc["sensor"][sensorNumber]["raw"] = sensorValue;
+    doc["sensor"][sensorNumber]["percentage"] = percentage;
+    doc["sensor"][sensorNumber]["voltage"] = voltage;
+    doc["sensor"][sensorNumber]["volumeWaterContent"] = volumeWaterContent;
+
+    return doc;
 }
 
 void loop() {
   webSocket.loop();
 
-  // READ RAW SENSOR DATA
-  float
-    sensorValuePlantOne,
-    percentagePlantOne,
-    voltagePlantOne,
-    volumeWaterContentPlantOne,
-    sensorValuePlantTwo,
-    percentagePlantTwo,
-    voltagePlantTwo,
-    volumeWaterContentPlantTwo;
+  DynamicJsonDocument sensorData(1024);
 
-  // INIT DATA
-  // Plant 1
-  sensorValuePlantOne = analogReadPlantOne(); // read sensor
-  percentagePlantOne = map(sensorValuePlantOne, DRY_GROUND, WET_GROUND, 0, 100);
-  if (percentagePlantOne > 100) {
-    percentagePlantOne = 100;
-  } else if (percentagePlantOne < 0) {
-    percentagePlantOne = 0;
+  for (int i = 0; i < SENSOR_COUNT; i++) {
+    int sensorValue = readSensor(i);
+    DynamicJsonDocument sensorJson = createSensorJson(sensorValue, i);
+    sensorData["sensors"][i] = sensorJson["sensor"][i];
   }
-  voltagePlantOne = (float(percentagePlantOne)/1023.0)*3.3;
-  volumeWaterContentPlantOne = ((1.0/voltagePlantTwo)*SLOPE)+INTERCEPT; // calc of theta_v (vol. water content)
 
-  // Plant 2
-  sensorValuePlantTwo = analogReadPlantTwo(); // read sensor
-  percentagePlantTwo = map(sensorValuePlantTwo, DRY_GROUND, WET_GROUND, 0, 100);
-  if (percentagePlantTwo > 100) {
-    percentagePlantTwo = 100;
-  } else if (percentagePlantTwo < 0) {
-    percentagePlantTwo = 0;
-  }
-  voltagePlantTwo = (float(percentagePlantTwo)/1023.0)*3.3;
-  volumeWaterContentPlantTwo = ((1.0/voltagePlantTwo)*SLOPE)+INTERCEPT; // calc of theta_v (vol. water content)
-
-  Serial.print("sensor 1 = ");
-  Serial.print(sensorValuePlantOne);
-  Serial.print(" / sensor 2 = ");
-  Serial.println(sensorValuePlantTwo);
-
-  // CREATE JSON
-  DynamicJsonDocument doc(512);
-  // Plant 1
-  doc["plantOne"]["raw"] = sensorValuePlantOne;
-  doc["plantOne"]["percentage"] = percentagePlantOne;
-  doc["plantOne"]["voltage"] = voltagePlantOne;
-  doc["plantOne"]["volumeWaterContent"] = volumeWaterContentPlantOne;
-  // Plant two
-  doc["plantTwo"]["raw"] = sensorValuePlantTwo;
-  doc["plantTwo"]["percentage"] = percentagePlantTwo;
-  doc["plantTwo"]["voltage"] = voltagePlantTwo;
-  doc["plantTwo"]["volumeWaterContent"] = volumeWaterContentPlantTwo;
   String json;
-  serializeJson(doc, json);
+  serializeJson(sensorData, json);
+  Serial.println(json);
+  webSocket.broadcastTXT(json);
 
-  // SEND DATA
-  if (previousReadSoilPlant1 != sensorValuePlantOne && previousReadSoilPlant2 != sensorValuePlantTwo) {
-    // LOG DATA
-    Serial.println(json);
-    // SEND OVER WS
-    webSocket.broadcastTXT(json);
-    previousReadSoilPlant1 = sensorValuePlantOne;
-    previousReadSoilPlant2 = sensorValuePlantTwo;
-  }
-
-  // DELAY LOOP
   delay(DELAY_LOOP_MS);
 }
 
