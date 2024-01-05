@@ -15,9 +15,9 @@ IPAddress subnet(255, 255, 255, 0);
 IPAddress primaryDNS(8, 8, 8, 8); // this is optional
 IPAddress secondaryDNS(8, 8, 4, 4); // this is optional
 
-const int SENSOR_COUNT = 3;
+const int SENSOR_COUNT = 4;
 // GPIO PINS ARE USED
-const int SENSOR_PINS[SENSOR_COUNT] = {16, 5, 4};
+const int SENSOR_PINS[SENSOR_COUNT] = {16, 5, 4, 14};
 
 // INPUT PINS
 const int MULTIPLEX_ANALOG_PIN_0 = A0;
