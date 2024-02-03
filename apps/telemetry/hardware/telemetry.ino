@@ -10,8 +10,7 @@ enum SensorType
 {
   MOISTURE,
   LIGHT,
-  CO2,
-  OXYGEN
+  AIR_QUALITY
 };
 
 struct SensorConfig
@@ -36,20 +35,15 @@ IPAddress secondaryDNS(8, 8, 4, 4); // this is optional
 #define HYGROMETER_TYPE DHT11 // DHT 11
 DHT hygrometer(HYGROMETER_PIN, HYGROMETER_TYPE);
 
-const int SENSOR_COUNT = 7; // Total number of sensors
+const int SENSOR_COUNT = 6; // Total number of sensors
+// PIN 15 is ready to be connected.
 SensorConfig sensors[SENSOR_COUNT] = {
     {MOISTURE, 16},
     {MOISTURE, 5},
     {MOISTURE, 4},
     {MOISTURE, 14},
-    {LIGHT, 8},
-    {CO2, 2},
-    {OXYGEN, 15}};
-
-// MOISTURE SENSOR CONFIG
-const int MOISTURE_SENSOR_COUNT = 4;
-// GPIO PINS ARE USED FOR THE SOIL MOISTURE SENSORS
-const int MOISTURE_SENSOR_PINS[MOISTURE_SENSOR_COUNT] = {16, 5, 4, 14};
+    {LIGHT, 0},
+    {AIR_QUALITY, 13}};
 
 // ANALOG PINS
 const int MULTIPLEX_ANALOG_PIN_0 = A0;
@@ -195,7 +189,7 @@ int readSensor(SensorConfig currentSensor)
   int sample[SAMPLE_RATE];
   // memset sets the bytes of sample to 0. Since int is typically larger than a byte,
   // this effectively sets each element of the array to 0.
-  memset(sample, 0, sizeof(sample));
+  // memset(sample, 0, sizeof(sample));
 
   for (int x = 0; x < SAMPLE_RATE; x++)
   {
@@ -295,28 +289,14 @@ DynamicJsonDocument createLightSensorJson(SensorConfig sensor, int value)
   return doc;
 }
 
-DynamicJsonDocument createCO2SensorJson(SensorConfig sensor, int value)
+DynamicJsonDocument createAirQualitySensorJson(SensorConfig sensor, int value)
 {
   DynamicJsonDocument doc(128);
   doc["type"] = sensor.type;
   doc["pin"] = gpioToDPin(sensor.pin);
   doc["value"] = value;
 
-  Serial.print("CO2: ");
-  Serial.print(value);
-  Serial.println(" PPM");
-
-  return doc;
-}
-
-DynamicJsonDocument createOxygenSensorJson(SensorConfig sensor, int value)
-{
-  DynamicJsonDocument doc(128);
-  doc["type"] = sensor.type;
-  doc["pin"] = gpioToDPin(sensor.pin);
-  doc["value"] = value;
-
-  Serial.print("OXYGEN: ");
+  Serial.print("AIR_QUALITY: ");
   Serial.print(value);
   Serial.println(" PPM");
 
@@ -353,18 +333,11 @@ void loop()
       sensorData["sensors"][i] = sensorLightJson;
       break;
     }
-    case CO2:
-    {
-      // Read CO2 sensor and add to JSON
-      DynamicJsonDocument sensorCO2Json = createCO2SensorJson(sensor, rawSensorValue);
-      sensorData["sensors"][i] = sensorCO2Json;
-      break;
-    }
-    case OXYGEN:
+    case AIR_QUALITY:
     {
       // Read oxygen sensor and add to JSON
-      DynamicJsonDocument sensorOxygenJson = createOxygenSensorJson(sensor, rawSensorValue);
-      sensorData["sensors"][i] = sensorOxygenJson;
+      DynamicJsonDocument sensorAirQualityJson = createAirQualitySensorJson(sensor, rawSensorValue);
+      sensorData["sensors"][i] = sensorAirQualityJson;
       break;
     }
       // Add cases for other sensor types if necessary
