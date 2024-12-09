@@ -34,6 +34,10 @@ link a package to an app
 
 ## Microservices
 
+Makes uses of CQRS & Event sourcing demo app can be found here:
+
+https://github.com/yerinadler/typescript-event-sourcing-sample-app
+
 - Telemetry Commands
 - Telemetry Queries
 
