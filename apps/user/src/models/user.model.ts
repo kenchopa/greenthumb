@@ -34,16 +34,16 @@ export type UserToCreate = Omit<UserToUpdate, 'id'>;
 @Unique(USER_UNIQUE_USERNAME, ['username'])
 export default class User {
   @PrimaryGeneratedColumn('uuid')
-  id: string;
+  id!: string;
 
   @Column({ length: 255, nullable: false, type: 'varchar' })
-  email: string;
+  email!: string;
 
   @Column({ length: 64, nullable: false, type: 'varchar' })
-  username: string;
+  username!: string;
 
   @Column({ length: 512, nullable: false, type: 'varchar' })
-  password: string;
+  password!: string;
 
   @Column({
     default: Role.USER,
@@ -51,7 +51,7 @@ export default class User {
     nullable: false,
     type: 'enum',
   })
-  role: Role;
+  role!: Role;
 
   @Column({ length: 128, nullable: true, type: 'varchar' })
   firstName?: string;
@@ -60,10 +60,10 @@ export default class User {
   lastName?: string;
 
   @CreateDateColumn({ nullable: false, type: 'timestamptz' })
-  createdAt: Date;
+  createdAt!: Date;
 
   @UpdateDateColumn({ nullable: false, type: 'timestamptz' })
-  updatedAt: Date;
+  updatedAt!: Date;
 
   @BeforeInsert()
   async encryptPassword() {

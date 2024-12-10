@@ -52,6 +52,10 @@ export default class Client {
   }
 
   public ping() {
+    if (!this.ws) {
+      throw new Error('WebSocket is not connected.');
+    }
+
     logger.debug(`Send "ping" command to "${this.name}".`);
     this.ws.send('ping');
   }

@@ -1,6 +1,6 @@
 {
   "env": {
-    "browser": false,
+    "browser": true, // Enable browser environment for React support
     "es6": true,
     "node": true,
     "jest": true
@@ -11,19 +11,26 @@
     "plugin:@typescript-eslint/eslint-recommended",
     "plugin:import/errors",
     "plugin:import/warnings",
-    "plugin:import/typescript"
+    "plugin:import/typescript",
+    "plugin:react/recommended", // Add React support
+    "plugin:react-hooks/recommended" // Add React Hooks support
   ],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
     "project": "./tsconfig.json",
     "ecmaVersion": "latest",
-    "sourceType": "module"
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": true // Enable JSX parsing
+    }
   },
   "plugins": [
     "@typescript-eslint",
     "simple-import-sort",
     "sort-keys-fix",
-    "unused-imports"
+    "unused-imports",
+    "react", // React plugin
+    "react-hooks" // React Hooks plugin
   ],
   "rules": {
     "import/no-extraneous-dependencies": [
@@ -94,6 +101,10 @@
         "tsx": "never"
       }
     ],
+    "react/react-in-jsx-scope": "off", // Not needed with React 17+
+    "react/prop-types": "off", // Disable prop-types check for TypeScript
+    "react-hooks/rules-of-hooks": "error", // Ensure proper usage of hooks
+    "react-hooks/exhaustive-deps": "warn", // Warn about missing dependencies in hooks
     "linebreak-style": [
       "error",
       "unix"
@@ -166,6 +177,9 @@
       "typescript": {
         "alwaysTryTypes": true
       }
+    },
+    "react": {
+      "version": "detect" // Automatically detect React version
     }
   }
 }

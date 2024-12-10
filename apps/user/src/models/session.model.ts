@@ -17,29 +17,29 @@ export const SESSION_UNIQUE_REFRESH_TOKEN = 'session_unique_refresh_token';
 @Unique(SESSION_UNIQUE_REFRESH_TOKEN, ['refreshToken'])
 export default class Session {
   @PrimaryGeneratedColumn('uuid')
-  id: string;
+  id!: string;
 
   @OneToOne(() => User, { cascade: true, nullable: false, onDelete: 'CASCADE' })
   @JoinColumn()
-  user: User;
+  user!: User;
 
   @Column({ length: 1024, nullable: false, type: 'varchar', unique: true })
-  accessToken: string;
+  accessToken!: string;
 
   @Column({ nullable: false, type: 'timestamptz' })
-  accessTokenExpiredAt: Date;
+  accessTokenExpiredAt!: Date;
 
   @Column({ length: 1024, nullable: false, type: 'varchar', unique: true })
-  refreshToken: string;
+  refreshToken!: string;
 
   @Column({ nullable: false, type: 'timestamptz' })
-  refreshTokenExpiredAt: Date;
+  refreshTokenExpiredAt!: Date;
 
   @CreateDateColumn({ nullable: false, type: 'timestamptz' })
-  createdAt: Date;
+  createdAt!: Date;
 
   @UpdateDateColumn({ nullable: false, type: 'timestamptz' })
-  updatedAt: Date;
+  updatedAt!: Date;
 
   public human() {
     return {

@@ -20,16 +20,8 @@
   },
   "include": [
     "./apps/**/*.ts",
-    "./packages/**/*.ts"
-  ],
-  "references": [
-    {"path": "apps/portal"},
-    {"path": "apps/telemetry"},
-    {"path": "apps/user"},
-    {"path": "packages/auth"},
-    {"path": "packages/core"},
-    {"path": "packages/delayer"},
-    {"path": "packages/logger"},
-    {"path": "packages/tracer"},
+    "./apps/**/*.tsx",
+    "./packages/**/*.ts",
+    "./packages/**/*.tsx"
   ]
 }
