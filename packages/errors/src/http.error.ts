@@ -33,6 +33,7 @@ export default class HttpError extends BaseError implements CastToApiProblem {
     | Error
     | Function
     | ApiProblem
+    | unknown
     | undefined;
 
   public interogate(meta: Array<any>) {

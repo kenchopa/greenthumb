@@ -1,11 +1,7 @@
 import { v4 as uuidV4 } from 'uuid';
 
 import config from '../config';
-import {
-  UserLoginRequest,
-  UserRegisterRequest,
-  UserRole,
-} from '../types/user.type';
+import { UserLoginRequest, UserRegisterRequest, UserRole } from '../types/user.type';
 import SecuredHttpClient from './secured-http.client';
 
 type RegisteredUser = {

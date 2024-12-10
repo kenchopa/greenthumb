@@ -1,6 +1,12 @@
 {
   "name": "@greenthumb/auth",
-  "main": "src/index.ts",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc",
+    "clean": "rimraf dist coverage",
+    "lint": "eslint src/**/* --ext js,ts",
+    "lint:fix": "eslint src/**/* --ext js,ts --fix"
+  },
   "dependencies": {
     "@greenthumb/errors": "workspace:^",
     "joi": "^17.7.0",

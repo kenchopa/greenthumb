@@ -19,32 +19,67 @@
     "ecmaVersion": "latest",
     "sourceType": "module"
   },
-  "plugins": ["@typescript-eslint", "simple-import-sort", "sort-keys-fix", "unused-imports"],
+  "plugins": [
+    "@typescript-eslint",
+    "simple-import-sort",
+    "sort-keys-fix",
+    "unused-imports"
+  ],
   "rules": {
-    "import/no-extraneous-dependencies": ["error", {"devDependencies": true}],
+    "import/no-extraneous-dependencies": [
+      "error",
+      {
+        "devDependencies": true
+      }
+    ],
     "simple-import-sort/imports": "error",
     "simple-import-sort/exports": "error",
     "sort-keys-fix/sort-keys-fix": "warn",
     "@typescript-eslint/naming-convention": [
       "error",
       {
-        "format": ["camelCase", "UPPER_CASE", "PascalCase"],
-        "selector": ["variable"]
+        "format": [
+          "camelCase",
+          "UPPER_CASE",
+          "PascalCase"
+        ],
+        "selector": [
+          "variable"
+        ]
       },
       {
-        "format": ["PascalCase"],
+        "format": [
+          "PascalCase"
+        ],
         "selector": "typeLike"
       },
       {
-        "format": ["UPPER_CASE"],
+        "format": [
+          "UPPER_CASE"
+        ],
         "selector": "enumMember"
       }
     ],
-    "@typescript-eslint/no-empty-function": ["error"],
+    "@typescript-eslint/no-empty-function": [
+      "error",
+      {
+        "allow": [
+          "arrowFunctions",
+          "functions",
+          "methods"
+        ]
+      }
+    ],
     "@typescript-eslint/no-floating-promises": "error",
     "@typescript-eslint/no-shadow": "error",
     "@typescript-eslint/no-unused-vars": "error",
-    "@typescript-eslint/no-use-before-define": ["error"],
+    "@typescript-eslint/no-use-before-define": [
+      "error",
+      {
+        "functions": false,
+        "classes": true
+      }
+    ],
     "@typescript-eslint/no-useless-constructor": "error",
     "@typescript-eslint/return-await": "error",
     "camelcase": "off",
@@ -59,7 +94,10 @@
         "tsx": "never"
       }
     ],
-    "linebreak-style": ["error", "unix"],
+    "linebreak-style": [
+      "error",
+      "unix"
+    ],
     "quotes": [
       "error",
       "single",
@@ -76,7 +114,9 @@
         "natural": true
       }
     ],
-    "no-console": ["warn"],
+    "no-console": [
+      "warn"
+    ],
     "no-param-reassign": "warn",
     "no-underscore-dangle": 0,
     "no-unused-expressions": "error",
@@ -102,11 +142,25 @@
         "args": "after-used",
         "argsIgnorePattern": "^_"
       }
+    ],
+    "max-len": [
+      "error",
+      {
+        "code": 100,
+        "tabWidth": 2,
+        "ignoreUrls": true,
+        "ignoreStrings": true,
+        "ignoreTemplateLiterals": true,
+        "ignoreRegExpLiterals": true
+      }
     ]
   },
   "settings": {
     "import/parsers": {
-      "@typescript-eslint/parser": [".ts", ".tsx"]
+      "@typescript-eslint/parser": [
+        ".ts",
+        ".tsx"
+      ]
     },
     "import/resolver": {
       "typescript": {

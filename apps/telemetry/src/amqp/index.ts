@@ -22,12 +22,9 @@ const initialize = async () => {
 
     channel = await connection.createChannel();
   } catch (error) {
-    logger.error(
-      `Failed to set up RabbitMQ. Re-trying in ${connectionRetries} seconds...`,
-      {
-        errorMessage: (error as Error).message,
-      },
-    );
+    logger.error(`Failed to set up RabbitMQ. Re-trying in ${connectionRetries} seconds...`, {
+      errorMessage: (error as Error).message,
+    });
 
     await sleep(connectionRetries * 1000);
     connectionRetries += 1;
@@ -51,22 +48,17 @@ export const publishMessage = async (
     throw new Error('No RabbitMQ channel found.');
   }
 
-  channel.publish(
-    config.RABBITMQ.EXCHANGE,
-    key,
-    Buffer.from(JSON.stringify(payload), 'utf8'),
-    {
-      contentType: 'application/json',
-      headers: {
-        app_id: config.APP.SERVICE_NAME,
-        version: 1,
-        ...headers,
-      },
-      messageId: uuid.v4(),
-      timestamp: Math.floor(new Date().valueOf() / 1000),
-      ...properties,
+  channel.publish(config.RABBITMQ.EXCHANGE, key, Buffer.from(JSON.stringify(payload), 'utf8'), {
+    contentType: 'application/json',
+    headers: {
+      app_id: config.APP.SERVICE_NAME,
+      version: 1,
+      ...headers,
     },
-  );
+    messageId: uuid.v4(),
+    timestamp: Math.floor(new Date().valueOf() / 1000),
+    ...properties,
+  });
 };
 
 export const checkHealth = async () => {
@@ -77,9 +69,7 @@ export const checkHealth = async () => {
 
     await channel.checkExchange(config.RABBITMQ.EXCHANGE);
   } catch (error) {
-    throw new Error(
-      (error as Error).message ?? 'Unknown error in RabbitMQ health check',
-    );
+    throw new Error((error as Error).message ?? 'Unknown error in RabbitMQ health check');
   }
 };
 
@@ -89,9 +79,7 @@ export default async function initializeRabbitMQConnection() {
   await initialize();
 
   connection.on('close', async () => {
-    logger.error(
-      `RabbitMQ connection closed. Re-trying in ${connectionRetries} seconds...`,
-    );
+    logger.error(`RabbitMQ connection closed. Re-trying in ${connectionRetries} seconds...`);
 
     await sleep(connectionRetries * 1000);
     connectionRetries += 1;

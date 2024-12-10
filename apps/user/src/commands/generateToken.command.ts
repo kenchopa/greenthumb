@@ -1,4 +1,3 @@
-/* eslint-disable import/prefer-default-export */
 import 'dotenv/config';
 
 import { generateAccessToken, Role } from '@greenthumb/auth';

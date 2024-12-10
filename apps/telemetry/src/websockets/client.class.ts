@@ -6,7 +6,7 @@ type WebSocketName = 'SOIL' | 'BAROMETER' | 'PH' | 'LIGHT';
 export default class Client {
   private name: WebSocketName;
 
-  private ws: WebSocket;
+  private ws?: WebSocket | null;
 
   private reconnectInterval: number;
 
@@ -103,9 +103,7 @@ export default class Client {
       const { data } = event;
       const message = data.toString();
 
-      logger.info(
-        `WebSocket "${this.name}" received message: ${data.toString()}`,
-      );
+      logger.info(`WebSocket "${this.name}" received message: ${data.toString()}`);
       if (message === 'pong') {
         this.ping();
         return;

@@ -32,8 +32,8 @@ const Profile: React.FC = () => {
         )}
       </p>
       <p>
-        <strong>AccessTokenExpiredAt:</strong>
-        {currentSession.accessTokenExpiredAt}
+      <strong>AccessTokenExpiredAt:</strong> 
+        {currentSession.accessTokenExpiredAt.toString()}
       </p>
 
       <p>
@@ -45,9 +45,9 @@ const Profile: React.FC = () => {
       </p>
       <p>
         <strong>RefreshTokenExpiredAt:</strong>
-        {currentSession.refreshTokenExpiredAt}
+        {currentSession.refreshTokenExpiredAt.toString()}
       </p>
-
+    
       <p>
         <strong>Id:</strong> {currentSession.loggedInUser.id}
       </p>

@@ -6,13 +6,12 @@
     "node": "20.x"
   },
   "scripts": {
+    "build": "pnpm -r run build",
     "clean": "find . -name 'node_modules' -type d -prune -exec rm -rf '{}' +",
     "portal": "pnpm --filter @greenthumb/portal",
     "user": "pnpm --filter @greenthumb/user",
     "telemetry": "pnpm --filter @greenthumb/telemetry",
-    "telemetry-commands": "pnpm --filter @greenthumb/telemetry-commands",
-    "dev": "pnpm --recursive --parallel --stream run dev",
-    "build": "pnpm --recursive --parallel --stream run build"
+    "dev": "pnpm --recursive --parallel --stream run dev"
   },
   "keywords": [],
   "author": "Kengy Van Hijfte",

@@ -1,25 +1,35 @@
 {
-    "compilerOptions": {
-      "useDefineForClassFields": true,
-      "target": "es2019",
-      "module": "commonjs",
-      "allowJs": false,
-      "skipLibCheck": true,
-      "esModuleInterop": true,
-      "allowSyntheticDefaultImports": true,
-      "strict": true,
-      "forceConsistentCasingInFileNames": true,
-      "resolveJsonModule": true,
-      "isolatedModules": true,
-      "sourceMap": true,
-      "experimentalDecorators": true,
-      "emitDecoratorMetadata": true,
-      "strictPropertyInitialization": false,
-      "noImplicitAny": true,
-    },
-    "include": [
-      "./apps/**/*.ts",
-      "./packages/**/*.ts"
-    ]
+  "compilerOptions": {
+    "useDefineForClassFields": true, // Ensures class fields are initialized using ECMAScript's `[[Define]]` semantics for better compliance with the JavaScript specification and improved compatibility with modern frameworks and inheritance.
+    "target": "es2022", // Use modern features while supporting current LTS versions of Node.js
+    "module": "commonjs", // CommonJS is standard for Node.js backend
+    "allowJs": false, // Disallow JavaScript files to enforce strict TypeScript usage
+    "skipLibCheck": true, // Speeds up compilation by skipping library checks
+    "esModuleInterop": true, // Required for seamless interop with CommonJS modules
+    "allowSyntheticDefaultImports": true, // Allow default imports for CommonJS modules
+    "strict": true, // Enables all strict type-checking options
+    "forceConsistentCasingInFileNames": true, // Prevents issues on case-sensitive filesystems
+    "resolveJsonModule": true, // Allows importing JSON files as modules
+    "isolatedModules": true, // Ensures each file is treated as a standalone module
+    "sourceMap": true, // Generates source maps for debugging
+    "experimentalDecorators": true, // Disable unless using decorators (e.g., in frameworks like NestJS)
+    "emitDecoratorMetadata": true, // Disable unless required by a framework or library (used for typeorm)
+    "strictPropertyInitialization": true, // Enforce initialization of class properties
+    "noImplicitAny": true, // Ensure all types are explicitly defined
+    "moduleResolution": "node", // Explicitly set Node.js module resolution
+  },
+  "include": [
+    "./apps/**/*.ts",
+    "./packages/**/*.ts"
+  ],
+  "references": [
+    {"path": "apps/portal"},
+    {"path": "apps/telemetry"},
+    {"path": "apps/user"},
+    {"path": "packages/auth"},
+    {"path": "packages/core"},
+    {"path": "packages/delayer"},
+    {"path": "packages/logger"},
+    {"path": "packages/tracer"},
+  ]
 }
-  

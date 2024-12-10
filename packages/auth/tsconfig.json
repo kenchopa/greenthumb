@@ -2,10 +2,16 @@
   "extends": "../../tsconfig.json",
   "compilerOptions": {
     "composite": true,
-    "target": "es2019",
-    "module": "commonjs",
     "outDir": "dist",
+    "rootDir": "src",
+    "tsBuildInfoFile": "dist/tsconfig.tsbuildinfo"
   },
-  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/index.ts"],
-  "exclude": ["node_modules/**/*"],
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.d.ts",
+    "src/index.ts"
+  ],
+  "exclude": [
+    "node_modules/**/*"
+  ],
 }

@@ -2,15 +2,7 @@ import Joi from 'joi';
 
 type App = {
   NODE_ENV: 'development' | 'production' | 'test';
-  LOG_LEVEL:
-    | 'emerg'
-    | 'alert'
-    | 'crit'
-    | 'error'
-    | 'warning'
-    | 'notice'
-    | 'info'
-    | 'debug';
+  LOG_LEVEL: 'emerg' | 'alert' | 'crit' | 'error' | 'warning' | 'notice' | 'info' | 'debug';
 };
 
 type Auth = {
