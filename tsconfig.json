@@ -17,16 +17,9 @@
       "strictPropertyInitialization": false,
       "noImplicitAny": true,
     },
-    "include": ["./apps/user/src/**/*.ts"],
-    "references": [
-      {"path": "apps/portal"},
-      {"path": "apps/telemetry"},
-      {"path": "apps/user"},
-      {"path": "packages/auth"},
-      {"path": "packages/core"},
-      {"path": "packages/delayer"},
-      {"path": "packages/logger"},
-      {"path": "packages/tracer"},
+    "include": [
+      "./apps/**/*.ts",
+      "./packages/**/*.ts"
     ]
 }
   
